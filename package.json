@@ -1,0 +1,36 @@
+{
+  "name": "@angular-package/range",
+  "version": "1.0.0",
+  "description": "The range between of minimum and maximum.",
+  "author": "Angular Package <angular-package@wvvw.dev> (https://wvvw.dev)",
+  "homepage": "https://github.com/angular-package/range#readme",
+  "peerDependencies": {
+    "@angular-package/type": "^5.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular-package/testing": "^2.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "keywords": [
+    "Range",
+    "Minimum",
+    "Maximum",
+    "maximum number",
+    "minimum number",
+    "between"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular-package/range.git"
+  },
+  "bugs": {
+    "url": "https://github.com/angular-package/range/issues"
+  },
+  "license": "MIT"
+}
