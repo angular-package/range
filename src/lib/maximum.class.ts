@@ -11,7 +11,7 @@ export class Maximum<Max extends number> extends Number {
   //#region static properties.
   //#region static public properties.
   /**
-   * The static property `get` of `number` returns the primitive value of an instance of `Maximum` if set otherwise returns `undefined`.
+   * The static property `get` of `number` returns the primitive value of the `Maximum` instance if set otherwise returns `undefined`.
    */
   public static get get(): number {
     return this.#maximum?.valueOf();
