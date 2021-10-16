@@ -143,7 +143,7 @@ The `Maximum` primitive wrapper [`object`][js-object] represents the maximum [`n
 
 | Maximum.                 | Description |
 | :----------------------- | :---------- |
-| [`get`](#maximumget)     | The [`static`][js-static] property `get` of [`number`][js-number] **returns** the [primitive][js-primitive] value of an instance of [`Maximum`](#maximum) if set otherwise returns [`undefined`][js-undefined]. |
+| [`get`](#maximumget)     | The [`static`][js-static] property `get` of [`number`][js-number] **returns** the [primitive][js-primitive] value of the [`Maximum`](#maximum) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`set`](#maximumset)     | The [`static`][js-static] property `set` of [`number`][js-number] type **sets** a new instance of [`Maximum`](#maximum) with its provided value that can be got by the [`get`](#maximumget), [`value`](#maximumvalue) static properties, or static [`getMaximum()`](#maximumgetmaximum) method. |
 | [`value`](#maximumvalue) | The [`static`][js-static] property `value` of [`number`][js-number] type **sets** a new instance of [`Maximum`](#maximum) with its provided value that can be got by itself and the [`get`](#maximumget) static property, or static [`getMaximum()`](#maximumgetmaximum) method. |
 
@@ -153,7 +153,7 @@ The `Maximum` primitive wrapper [`object`][js-object] represents the maximum [`n
 
 | Maximum.prototype.            | Description |
 | :---------------------------- | :---------- |
-| [`get`](#maximumprototypeget) | The property `get` returns the [`primitive`][js-primitive] value of an instance of [`Maximum`](#maximum). |
+| [`get`](#maximumprototypeget) | The property `get` returns the [primitive][js-primitive] value of the generic type variable `Max` of the [`Maximum`](#maximum) instance. |
 
 <br>
 
@@ -178,7 +178,7 @@ The `Maximum` primitive wrapper [`object`][js-object] represents the maximum [`n
 
 | Maximum.prototype.                      | Description |
 | :-------------------------------------- | :---------- |
-| [`valueOf()`](#maximumprototypevalueof) | The `valueOf()` method returns the [`primitive`][js-primitive] value of the specified [`Maximum`](#maximum) object. |
+| [`valueOf()`](#maximumprototypevalueof) | The `valueOf()` method returns the [primitive][js-primitive] value of the generic type variable `Max` of the specified [`Maximum`](#maximum) object. |
 
 <br>
 
@@ -186,7 +186,7 @@ The `Maximum` primitive wrapper [`object`][js-object] represents the maximum [`n
 
 #### `Maximum.get`
 
-The [`static`][js-static] property `get` of [`number`][js-number] **returns** the [primitive][js-primitive] value of an instance of [`Maximum`](#maximum) if set otherwise returns [`undefined`][js-undefined].
+The [`static`][js-static] property `get` of [`number`][js-number] **returns** the [primitive][js-primitive] value of the [`Maximum`](#maximum) instance if set otherwise returns [`undefined`][js-undefined].
 
 ```typescript
 public static get get(): number {
@@ -279,7 +279,7 @@ const value2 = Maximum.value;
 
 #### `Maximum.prototype.get`
 
-The property `get` returns the [primitive][js-primitive] value of generic type variable `Max`  of an [`Maximum`](#maximum) instance.
+The property `get` returns the [primitive][js-primitive] value of the generic type variable `Max` of the [`Maximum`](#maximum) instance.
 
 ```typescript
 public get get(): Max {
@@ -484,7 +484,7 @@ The `Minimum` primitive wrapper [`object`][js-object] represents the minimum [`n
 
 | Minimum.                 | Description |
 | :----------------------- | :---------- |
-| [`get`](#minimumget)     | The [`static`][js-static] property `get` of [`number`][js-number] **returns** the [primitive][js-primitive] value of an instance of [`Minimum`](#minimum) if set otherwise returns [`undefined`][js-undefined]. |
+| [`get`](#minimumget)     | The [`static`][js-static] property `get` of [`number`][js-number] **returns** the [primitive][js-primitive] value of the [`Minimum`](#minimum) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`set`](#minimumset)     | The [`static`][js-static] property `set` of [`number`][js-number] type **sets** a new instance of [`Minimum`](#minimum) with its provided value that can be got by the [`get`](#minimumget), [`value`](#minimumvalue) static properties, or static [`getMinimum()`](#minimumgetminimum) method. |
 | [`value`](#minimumvalue) | The [`static`][js-static] property `value` of [`number`][js-number] type **sets** a new instance of [`Minimum`](#minimum) with its provided value that can be got by itself and the [`get`](#minimumget) static property, or static [`getMinimum()`](#minimumgetminimum) method. |
 
@@ -527,7 +527,7 @@ The `Minimum` primitive wrapper [`object`][js-object] represents the minimum [`n
 
 #### `Minimum.get`
 
-The [`static`][js-static] property `get` of [`number`][js-number] **returns** the [primitive][js-primitive] value of an instance of [`Minimum`](#minimum) if set otherwise returns [`undefined`][js-undefined].
+The [`static`][js-static] property `get` of [`number`][js-number] **returns** the [primitive][js-primitive] value of the [`Minimum`](#minimum) instance if set otherwise returns [`undefined`][js-undefined].
 
 ```typescript
 public static get get(): number {
