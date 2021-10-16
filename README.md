@@ -494,7 +494,7 @@ The `Minimum` primitive wrapper [`object`][js-object] represents the minimum [`n
 
 | Minimum.prototype.            | Description |
 | :---------------------------- | :---------- |
-| [`get`](#minimumprototypeget) | The property `get` returns the [`primitive`][js-primitive] value of an instance of [`Minimum`](#minimum). |
+| [`get`](#minimumprototypeget) | The property `get` returns the [primitive][js-primitive] value of the generic type variable `Min` of the [`Minimum`](#minimum) instance. |
 
 <br>
 
