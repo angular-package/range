@@ -11,23 +11,23 @@ export class Minimum<Min extends number> extends Number {
   //#region static properties.
   //#region static public properties.
   /**
-   * The static property `get` of `number` returns the primitive value of the `Minimum` instance if set otherwise returns `undefined`.
+   * The static `get` property of `number` returns the primitive value of the `Minimum` instance if set, otherwise returns `undefined`.
    */
   public static get get(): number {
     return this.#minimum?.valueOf();
   }
 
   /**
-   * The static property `set` of number type sets a new instance of `Minimum` with its provided value that can be got by the `get`, `value`
-   * static properties, or static `getMinimum()` method.
+   * The static `set` property of `number` type sets a new instance of `Minimum` with its provided value. The set value can be got by the
+   * static `get` and `value` properties, or static `getMinimum()` method.
    */
   public static set set(minimum: number) {
     this.value = minimum;
   }
 
   /**
-   * The static property `value` of `number` type sets a new instance of `Minimum` with its provided value that can be got by itself and the
-   * `get` static property, or static `getMinimum()` method.
+   * The static `value` property of `number` type sets a new instance of `Minimum` with its provided value and returns the primitive value
+   * of `Minimum` instance if set, otherwise returns `undefined`.
    */
   public static get value(): number {
     return this.#minimum?.valueOf();
@@ -102,6 +102,7 @@ export class Minimum<Min extends number> extends Number {
   }
   //#endregion constructor.
 
+  //#region instance public methods.
   /**
    * The `valueOf()` method returns the primitive value of the generic type variable `Min` of the specified `Minimum` object.
    * @returns The return value is `number` of generic type variable `Min`.
@@ -109,4 +110,5 @@ export class Minimum<Min extends number> extends Number {
   public valueOf(): Min {
     return super.valueOf() as Min;
   }
+  //#endregion instance public methods.
 }

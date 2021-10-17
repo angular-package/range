@@ -11,23 +11,23 @@ export class Maximum<Max extends number> extends Number {
   //#region static properties.
   //#region static public properties.
   /**
-   * The static property `get` of `number` returns the primitive value of the `Maximum` instance if set otherwise returns `undefined`.
+   * The static `get` property of `number` returns the primitive value of the `Maximum` instance if set otherwise returns `undefined`.
    */
   public static get get(): number {
     return this.#maximum?.valueOf();
   }
 
   /**
-   * The static property `set` of number type sets a new instance of `Maximum` with its provided value that can be got by the `get`, `value`
-   * static properties, or static `getMaximum()` method.
+   * The static `set` property of `number` type sets a new instance of `Maximum` with its provided value. The set value can be got by the
+   * static `get` and `value` properties, or static `getMaximum()` method.
    */
   public static set set(maximum: number) {
     this.value = maximum;
   }
 
   /**
-   * The static property `value` of `number` type sets a new instance of `Maximum` with its provided value that can be got by itself and the
-   * `get` static property, or static `getMaximum()` method.
+   * The static `value` property of `number` type sets a new instance of `Maximum` with its provided value and returns the primitive value
+   * of `Maximum` instance if set, otherwise returns `undefined`.
    */
   public static get value(): number {
     return this.#maximum?.valueOf();
