@@ -72,6 +72,7 @@ export class Maximum<Max extends number> extends Number {
   /**
    * The static `getMaximum()` method returns an instance of `Maximum` if set otherwise returns `undefined`.
    * @returns The return value is an instance of `Maximum` if set otherwise returns `undefined`.
+   * @angularpackage
    */
   public static getMaximum<Max extends number>(): Maximum<Max> {
     return this.#maximum;
@@ -83,6 +84,7 @@ export class Maximum<Max extends number> extends Number {
    * @param callback An optional callback `function` of the `ResultCallback` type to handle the result of the check whether the provided
    * `maximum` is a `number` type.
    * @returns The return value is static `Maximum`.
+   * @angularpackage
    */
   public static setMaximum(
     maximum: number,
@@ -97,9 +99,12 @@ export class Maximum<Max extends number> extends Number {
   /**
    * Creates a new instance of `Maximum`.
    * @param maximum The required immutable maximum of `number` type to set. The value can be picked by property `get` or `valueOf()` method.
+   * @param callback An optional callback function of the `ResultCallback` type to handle the result of the check whether the provided
+   * `maximum` is a number type.
+   * @angularpackage
    */
-  constructor(maximum: Max) {
-    super((guardNumber(maximum) && maximum) || undefined);
+  constructor(maximum: Max, callback?: ResultCallback<Max>) {
+    super((guardNumber(maximum, callback) && maximum) || undefined);
   }
   //#endregion constructor.
 
@@ -107,6 +112,7 @@ export class Maximum<Max extends number> extends Number {
   /**
    * The `valueOf()` method returns the primitive value of the generic type variable `Max` of the specified `Maximum` object.
    * @returns The return value is `number` of generic type variable `Max`.
+   * @angularpackage
    */
   public valueOf(): Max {
     return super.valueOf() as Max;
