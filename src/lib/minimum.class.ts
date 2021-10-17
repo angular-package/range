@@ -71,6 +71,7 @@ export class Minimum<Min extends number> extends Number {
   /**
    * The static `getMinimum()` method returns an instance of `Minimum` if set otherwise returns undefined.
    * @returns The return value is an instance of `Minimum` if set otherwise undefined.
+   * @angularpackage
    */
   public static getMinimum<Max extends number>(): Minimum<Max> {
     return this.#minimum;
@@ -82,6 +83,7 @@ export class Minimum<Min extends number> extends Number {
    * @param callback An optional callback function of `ResultCallback` type to handle the result of the check whether the provided `minimum`
    * is a `number` type.
    * @returns The return value is static `Minimum`.
+   * @angularpackage
    */
   public static setMinimum(
     minimum: number,
@@ -96,9 +98,12 @@ export class Minimum<Min extends number> extends Number {
   /**
    * Creates a new instance of `Minimum`.
    * @param maximum The required immutable minimum of `number` type to set. The value can be picked by property `get` or `valueOf()` method.
+   * @param callback An optional callback function of the `ResultCallback` type to handle the result of the check whether the provided
+   * `minimum` is a number type.
+   * @angularpackage
    */
   constructor(minimum: Min, callback?: ResultCallback<Min>) {
-    super((guardNumber(minimum) && minimum) || undefined);
+    super((guardNumber(minimum, callback) && minimum) || undefined);
   }
   //#endregion constructor.
 
@@ -106,6 +111,7 @@ export class Minimum<Min extends number> extends Number {
   /**
    * The `valueOf()` method returns the primitive value of the generic type variable `Min` of the specified `Minimum` object.
    * @returns The return value is `number` of generic type variable `Min`.
+   * @angularpackage
    */
   public valueOf(): Min {
     return super.valueOf() as Min;
