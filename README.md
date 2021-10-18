@@ -862,7 +862,7 @@ The [`Range`](#range) object represents a range between a [`number`][js-number] 
 | :--------------------------------------- | :---------- |
 | [`defineMaximum()`](#rangedefinemaximum) | The [`static`][js-static] `defineMaximum()` returns a new instance of [`Maximum`](#maximum) with the provided `max`. |
 | [`defineMinimum()`](#rangedefineminimum) | The [`static`][js-static] `defineMinimum()` method returns a new instance of [`Minimum`](#minimum) with the provided `min`. |
-| [`defineRange()`](#rangedefinerange)     | The [`static`][js-static] `defineRange()` method returns a new instance of [`Range`](#range) with the provided `minmax` or stored minimum and a maximum of static [`Range`](#range). |
+| [`defineRange()`](#rangedefinerange)     | The [`static`][js-static] `defineRange()` method returns a new instance of [`Range`](#range) with the provided `minmax` or stored [`Minimum`](#minimum) and a [`Maximum`](#maximum) of static [`Range`](#range). |
 | [`getMaximum()`](#rangegetmaximum)       | The [`static`][js-static] `getMaximum()` method returns an instance of [`Maximum`](#maximum) from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`getMinimum()`](#rangegetminimum)       | The [`static`][js-static] `getMinimum()` method returns an instance of [`Minimum`](#minimum) from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`getRange()`](#rangegetrange)           | The [`static`][js-static] `getRange()` method returns an instance of [`Range`](#range) if set otherwise returns [`undefined`][js-undefined]. |
@@ -888,7 +888,7 @@ The [`Range`](#range) object represents a range between a [`number`][js-number] 
 | [`getMaximum()`](#rangeprototypegetmaximum) | The `getMaximum()` method returns the [`Maximum`](#maximum) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`getMin()`](#rangeprototypegetmin)         | The `getMin()` method returns the [primitive][js-primitive] value of the [`Minimum`](#minimum) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`getMinimum()`](#rangeprototypegetminimum) | The `getMinimum()` method returns the [`Minimum`](#minimum) instance if set otherwise returns [`undefined`][js-undefined]. |
-| [`valueOf()`](#rangeprototypevalueof)       | The `valueOf()` method returns an object of `MinMax` interface from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
+| [`valueOf()`](#rangeprototypevalueof)       | The `valueOf()` method returns an [`object`][js-object] of the `MinMax` interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object]. |
 
 <br>
 
@@ -1088,7 +1088,7 @@ The **return value** is an instance of [`Minimum`](#minimum) with the value of p
 
 #### `Range.defineRange()`
 
-The [`static`][js-static] `defineRange()` method returns a new instance of [`Range`](#range) with the provided `minmax` or stored minimum and a maximum of static [`Range`](#range).
+The [`static`][js-static] `defineRange()` method returns a new instance of [`Range`](#range) with the provided `minmax` or stored [`Minimum`](#minimum) and a [`Maximum`](#maximum) of static [`Range`](#range).
 
 ```typescript
 public static defineRange<Min extends number, Max extends number>(
@@ -1443,7 +1443,7 @@ The **return value** is an instance of [`Minimum`](#minimum) or [`undefined`][js
 
 #### `Range.prototype.valueOf()`
 
-The `valueOf()` method returns an [`object`][js-object] of `MinMax` interface consists of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object].
+The `valueOf()` method returns an [`object`][js-object] of the `MinMax` interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object].
 
 ```typescript
 public valueOf(): MinMax<Min, Max> {
@@ -1453,7 +1453,7 @@ public valueOf(): MinMax<Min, Max> {
 
 **Returns:**
 
-The **return value** is an [`object`][js-object] consists of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances or an empty [`object`][js-object].
+The **return value** is an [`object`][js-object] consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances or an empty [`object`][js-object].
 
 **Usage:**
 
