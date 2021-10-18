@@ -9,20 +9,20 @@ import {
 import { Maximum } from './maximum.class';
 import { Minimum } from './minimum.class';
 /**
- * The `Range` object represents a range between number of minimum and maximum.
+ * The `Range` object represents a range between a number of minimum and maximum.
  */
 export class Range<Min extends number, Max extends number> {
   //#region static properties.
   //#region static public properties.
   /**
-   * The static `get` property returns an `object` of `MinMax` interface of the `Range` instance if set, otherwise returns `undefined`.
+   * The static `get` property returns an `object` of the `MinMax` interface of the `Range` instance if set otherwise returns `undefined`.
    */
   public static get get(): MinMax<any, any> {
     return this.#range?.get;
   }
 
   /**
-   * The static `set` property sets a new instance of `Range` with its provided object value of `MinMax` interface.
+   * The static `set` property sets a new instance of `Range` with its provided object value of the `MinMax` interface.
    */
   public static set set(minmax: MinMax<any, any>) {
     this.#range = new Range(minmax);
@@ -67,7 +67,7 @@ export class Range<Min extends number, Max extends number> {
 
   //#region instance properties.
   /**
-   * The `get` property returns an `object` of `MinMax` from the `Range` instance if set otherwise returns `undefined`.
+   * The `get` property of the `MinMax` interface returns an `object` from the `Range` instance.
    */
   public get get(): MinMax<Min, Max> {
     return this.#get;
@@ -122,29 +122,38 @@ export class Range<Min extends number, Max extends number> {
   /**
    * The static `defineMaximum()` returns a new instance of `Maximum` with the provided `max`.
    * @param max The maximum range of a generic type variable `Max` to create a new instance of `Maximum`.
-   * @param callback An optional callback function of `ResultCallback` type to handle the check whether the provided `max` is a number type.
+   * @param callback An optional callback function of the `ResultCallback` type to handle the check whether the provided `max` is a number
+   * type.
    * @returns The return value is an instance of `Maximum` with the value of provided `max`.
    */
-  public static defineMaximum<Max extends number>(max: Max, callback?: ResultCallback<Max>): Maximum<Max> {
+  public static defineMaximum<Max extends number>(
+    max: Max,
+    callback?: ResultCallback<Max>
+  ): Maximum<Max> {
     return new Maximum(max, callback);
   }
 
   /**
    * The static `defineMinimum()` method returns a new instance of `Minimum` with the provided `min`.
    * @param min The minimum range of a generic type variable `Min` to create a new instance of `Minimum`.
-   * @param callback An optional callback function of `ResultCallback` type to handle the check whether the provided `min` is a number type.
+   * @param callback An optional callback `function` of the `ResultCallback` type to handle the check whether the provided `min` is a
+   * `number` type.
    * @returns The return value is an instance of `Minimum` with the value of provided `min`.
    */
-  public static defineMinimum<Min extends number>(min: Min, callback?: ResultCallback<Min>): Minimum<Min> {
+  public static defineMinimum<Min extends number>(
+    min: Min,
+    callback?: ResultCallback<Min>
+  ): Minimum<Min> {
     return new Minimum(min, callback);
   }
 
   /**
-   * The static `defineRange()` method returns a new instance of `Range` with the provided `minmax` or from the static `Range`.
-   * @param minmax The object of `MinMax` interface to create a new instance of `Range`, by default its value is picked from the static
-   * `Range`.
-   * @param callback An optional callback function of `ResultCallback` type to handle the result of the check whether the provided `minmax`
-   * is an object that contains `min` or `max` property.
+   * The static `defineRange()` method returns a new instance of `Range` with the provided `minmax` or stored minimum and a maximum of
+   * static `Range`.
+   * @param minmax The object of the `MinMax` interface to create a new instance of `Range`, by default its value is picked from stored
+   * `minimum` and `maximum` of static `Range`.
+   * @param callback An optional callback `function` of the `ResultCallback` type to handle the result of the check whether the provided
+   * `minmax` is an `object` that contains `min` or `max` property.
    * @returns The return value is a new instance of `Range`.
    */
   public static defineRange<Min extends number, Max extends number>(
@@ -158,20 +167,71 @@ export class Range<Min extends number, Max extends number> {
   }
 
   /**
-   * The static `getRange()` method returns an instance of `Range` if set otherwise returns undefined.
-   * @returns The return value is an instance of `Range` or undefined.
+   * The static `getMaximum()` method returns an instance of `Maximum` from the `Range` instance if set otherwise returns `undefined`.
+   * @returns The return value is an instance of `Maximum` or `undefined`.
    */
-  public static getRange<Min extends number, Max extends number>(): Range<Min, Max> {
+  public static getMaximum<Max extends number>(): Maximum<Max> {
+    return this.#range?.getMaximum();
+  }
+
+  /**
+   * The static `getMinimum()` method returns an instance of `Minimum` from the `Range` instance if set otherwise returns `undefined`.
+   * @returns The return value is an instance of `Minimum` or `undefined`.
+   */
+  public static getMinimum<Min extends number>(): Minimum<Min> {
+    return this.#range?.getMinimum();
+  }
+
+  /**
+   * The static `getRange()` method returns an instance of `Range` if set otherwise returns `undefined`.
+   * @returns The return value is an instance of `Range` or `undefined`.
+   */
+  public static getRange<Min extends number, Max extends number>(): Range<
+    Min,
+    Max
+  > {
     return this.#range;
   }
 
   /**
-   * The static `setRange()` method sets a new instance of `Range` with the provided `minmax` or wth the minimum and maximum of static
+   * The static `setMaximum()` method sets the `Maximum` instance with the provided `maximum`.
+   * @param max The maximum range of a `number` type to create a new instance of `Maximum`.
+   * @param callback An optional callback `function` of the `ResultCallback` type to handle the result of the check whether the provided
+   * `max` is a `number` type.
+   * @returns The return value is a static `Range`.
+   */
+  public static setMaximum(
+    max: number,
+    callback?: ResultCallback<number>
+  ): typeof Range {
+    this.#maximum = new Maximum(max, callback);
+    this.setRange();
+    return this;
+  }
+
+  /**
+   * The static `setMinimum()` method sets the `Minimum` instance with the provided `minimum`.
+   * @param min The minimum range of a number type to create a new instance of `Minimum`.
+   * @param callback An optional callback `function` of the `ResultCallback` type to handle the result of the check whether the provided
+   * `min` is a `number` type.
+   * @returns The return value is a static `Range`.
+   */
+  public static setMinimum(
+    min: number,
+    callback?: ResultCallback<number>
+  ): typeof Range {
+    this.#minimum = new Minimum(min, callback);
+    this.setRange();
+    return this;
+  }
+
+  /**
+   * The static `setRange()` method sets a new instance of `Range` with the provided `minmax` or stored minimum and a maximum of static
    * `Range`.
-   * @param minmax The object of `MinMax` interface to create a new instance of `Range`, by default its value is picked from the static
-   * `Range`.
-   * @param callback An optional callback function of `ResultCallback` type to handle the result of the check whether the provided `minmax`
-   * is an object that contains `min` or `max` property.
+   * @param minmax The object of `MinMax` interface to create a new instance of `Range`, by default its value is picked from stored
+   * `Minimum` and `Maximum` of static `Range`.
+   * @param callback An optional callback function of the `ResultCallback` type to handle the result of the check whether the provided
+   * `minmax` is an object that contains `min` or `max` property.
    * @returns The return value is a static `Range`.
    */
   public static setRange<Min extends number, Max extends number>(
@@ -184,52 +244,14 @@ export class Range<Min extends number, Max extends number> {
     this.#range = new Range(minmax, callback);
     return this;
   }
-
-  /**
-   * The static `getMaximum()` method returns an instance of `Maximum` from the `Range` instance if set otherwise returns undefined.
-   * @returns The return value is an instance of `Maximum` or undefined.
-   */
-  public static getMaximum<Max extends number>(): Maximum<Max> {
-    return this.#range?.getMaximum();
-  }
-
-  /**
-   * The static `setMaximum()` method sets the `Maximum` instance with the provided `maximum`.
-   * @param max The maximum range of a number type to create a new instance of `Maximum`.
-   * @returns The return value is a static `Range`.
-   */
-  public static setMaximum(max: number): typeof Range {
-    this.#maximum = new Maximum(max);
-    this.setRange();
-    return this;
-  }
-
-  /**
-   * The static `getMinimum()` method returns an instance of `Minimum` from the `Range` instance if set otherwise returns undefined.
-   * @returns The return value is an instance of `Minimum` or undefined.
-   */
-  public static getMinimum<Min extends number>(): Minimum<Min> {
-    return this.#range?.getMinimum();
-  }
-
-  /**
-   * The static `setMinimum()` method sets the `Minimum` instance with the provided `minimum`.
-   * @param min The minimum range of a number type to create a new instance of `Minimum`.
-   * @returns The return value is a static `Range`.
-   */
-  public static setMinimum(min: number): typeof Range {
-    this.#minimum = new Minimum(min);
-    this.setRange();
-    return this;
-  }
   //#endregion static public methods.
 
   //#region constructor.
   /**
    * Creates a new instance of `Range`.
    * @param range The required object of optional `min` and `max` properties.
-   * @param callback An optional callback function of `ResultCallback` type to handle the check whether the provided `range` is an object
-   * that contains `min` or `max` properties.
+   * @param callback An optional callback function of the `ResultCallback` type to handle the check whether the provided `range` is an
+   * object that contains `min` or `max` properties.
    * @returns The return value is an instance of `Range`.
    */
   constructor(
@@ -245,7 +267,7 @@ export class Range<Min extends number, Max extends number> {
   //#region instance public methods.
   /**
    * The `getMax()` method returns the primitive value of the `Maximum` instance if set otherwise returns `undefined`.
-   * @returns The return value is a maximum of range of a generic type variable `Max`.
+   * @returns The return value is a maximum of the range of a generic type variable `Max` or `undefined`.
    */
   public getMax(): Max {
     return this.#max?.get;
@@ -261,7 +283,7 @@ export class Range<Min extends number, Max extends number> {
 
   /**
    * The `getMin()` method returns the primitive value of the `Minimum` instance if set otherwise returns `undefined`.
-   * @returns The return value is a minimum of range of a generic type variable `Min`.
+   * @returns The return value is a minimum of the range of a generic type variable `Min` or `undefined`.
    */
   public getMin(): Min {
     return this.#min.get;
@@ -276,8 +298,9 @@ export class Range<Min extends number, Max extends number> {
   }
 
   /**
-   * The `valueOf()` method returns an object of `MinMax` interface from the `Range` instance if set otherwise returns `undefined`.
-   * @returns The return value is an object from the `Range` instance.
+   * The `valueOf()` method returns an `object` of `MinMax` interface consists of `Minimum` and/or `Maximum` instances if set or an empty
+   * `object`.
+   * @returns The return value is an object consists of `Minimum` and/or `Maximum` instances or an empty `object`.
    */
   public valueOf(): MinMax<Min, Max> {
     return this.#get;
