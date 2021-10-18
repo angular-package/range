@@ -129,6 +129,7 @@ export class Range<Min extends number, Max extends number> {
    * @param callback An optional callback function of the `ResultCallback` type to handle the check whether the provided `max` is a number
    * type.
    * @returns The return value is an instance of `Maximum` with the value of provided `max`.
+   * @angularpackage
    */
   public static defineMaximum<Max extends number>(
     max: Max,
@@ -143,6 +144,7 @@ export class Range<Min extends number, Max extends number> {
    * @param callback An optional callback `function` of the `ResultCallback` type to handle the check whether the provided `min` is a
    * `number` type.
    * @returns The return value is an instance of `Minimum` with the value of provided `min`.
+   * @angularpackage
    */
   public static defineMinimum<Min extends number>(
     min: Min,
@@ -159,6 +161,7 @@ export class Range<Min extends number, Max extends number> {
    * @param callback An optional callback `function` of the `ResultCallback` type to handle the result of the check whether the provided
    * `minmax` is an `object` that contains `min` or `max` property.
    * @returns The return value is a new instance of `Range`.
+   * @angularpackage
    */
   public static defineRange<Min extends number, Max extends number>(
     minmax: MinMax<Min, Max> = {
@@ -173,6 +176,7 @@ export class Range<Min extends number, Max extends number> {
   /**
    * The static `getMaximum()` method returns an instance of `Maximum` from the `Range` instance if set otherwise returns `undefined`.
    * @returns The return value is an instance of `Maximum` or `undefined`.
+   * @angularpackage
    */
   public static getMaximum<Max extends number>(): Maximum<Max> {
     return this.#range?.getMaximum();
@@ -181,6 +185,7 @@ export class Range<Min extends number, Max extends number> {
   /**
    * The static `getMinimum()` method returns an instance of `Minimum` from the `Range` instance if set otherwise returns `undefined`.
    * @returns The return value is an instance of `Minimum` or `undefined`.
+   * @angularpackage
    */
   public static getMinimum<Min extends number>(): Minimum<Min> {
     return this.#range?.getMinimum();
@@ -189,6 +194,7 @@ export class Range<Min extends number, Max extends number> {
   /**
    * The static `getRange()` method returns an instance of `Range` if set otherwise returns `undefined`.
    * @returns The return value is an instance of `Range` or `undefined`.
+   * @angularpackage
    */
   public static getRange<Min extends number, Max extends number>(): Range<
     Min,
@@ -203,6 +209,7 @@ export class Range<Min extends number, Max extends number> {
    * @param callback An optional callback `function` of the `ResultCallback` type to handle the result of the check whether the provided
    * `max` is a `number` type.
    * @returns The return value is a static `Range`.
+   * @angularpackage
    */
   public static setMaximum(
     max: number,
@@ -219,6 +226,7 @@ export class Range<Min extends number, Max extends number> {
    * @param callback An optional callback `function` of the `ResultCallback` type to handle the result of the check whether the provided
    * `min` is a `number` type.
    * @returns The return value is a static `Range`.
+   * @angularpackage
    */
   public static setMinimum(
     min: number,
@@ -237,6 +245,7 @@ export class Range<Min extends number, Max extends number> {
    * @param callback An optional callback function of the `ResultCallback` type to handle the result of the check whether the provided
    * `minmax` is an object that contains `min` or `max` property.
    * @returns The return value is a static `Range`.
+   * @angularpackage
    */
   public static setRange<Min extends number, Max extends number>(
     minmax: MinMax<Min, Max> = {
@@ -258,6 +267,7 @@ export class Range<Min extends number, Max extends number> {
    * @param callback An optional callback function of the `ResultCallback` type to handle the check whether the provided `range` is an
    * object that contains `min` or `max` properties.
    * @returns The return value is an instance of `Range`.
+   * @angularpackage
    */
   constructor(
     range: MinMax<Min, Max> = {},
@@ -273,6 +283,7 @@ export class Range<Min extends number, Max extends number> {
   /**
    * The `getMax()` method returns the primitive value of the `Maximum` instance if set otherwise returns `undefined`.
    * @returns The return value is a maximum value of the range of a generic type variable `Max` or `undefined`.
+   * @angularpackage
    */
   public getMax(): Max {
     return this.#max?.get;
@@ -281,6 +292,7 @@ export class Range<Min extends number, Max extends number> {
   /**
    * The `getMaximum()` method returns the `Maximum` instance if set otherwise returns `undefined`.
    * @returns The return value is an instance of `Maximum` or `undefined`.
+   * @angularpackage
    */
   public getMaximum(): Maximum<Max> {
     return this.#max;
@@ -289,6 +301,7 @@ export class Range<Min extends number, Max extends number> {
   /**
    * The `getMin()` method returns the primitive value of the `Minimum` instance if set otherwise returns `undefined`.
    * @returns The return value is a minimum of the range of a generic type variable `Min` or `undefined`.
+   * @angularpackage
    */
   public getMin(): Min {
     return this.#min.get;
@@ -297,15 +310,17 @@ export class Range<Min extends number, Max extends number> {
   /**
    * The `getMinimum()` method returns the `Minimum` instance if set otherwise returns `undefined`.
    * @returns The return value is an instance of `Minimum` or `undefined`.
+   * @angularpackage
    */
   public getMinimum(): Minimum<Min> {
     return this.#min;
   }
 
   /**
-   * The `valueOf()` method returns an `object` of `MinMax` interface consists of `Minimum` and/or `Maximum` instances if set or an empty
-   * `object`.
-   * @returns The return value is an object consists of `Minimum` and/or `Maximum` instances or an empty `object`.
+   * The `valueOf()` method returns an `object` of the `MinMax` interface consists of the primitive values of `Minimum` and/or `Maximum`
+   * instances if set or an empty `object`.
+   * @returns The return value is an `object` consists of the primitive values of `Minimum` and/or `Maximum` instances or an empty `object`.
+   * @angularpackage
    */
   public valueOf(): MinMax<Min, Max> {
     return this.#get;
