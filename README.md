@@ -912,6 +912,14 @@ public static get get(): MinMax<any, any> {
 // Example usage.
 import { Range } from '@angular-package/range';
 
+// Returns undefined of type MinMax<any, any>
+const getRange = Range.get;
+
+// Set the range.
+Range.set = { min: 3, max: 27 };
+
+// Returns {max: 27, min: 3} of type MinMax<any, any>
+Range.get;
 ```
 
 <br>
@@ -932,6 +940,11 @@ public static set set(minmax: MinMax<any, any>) {
 // Example usage.
 import { Range } from '@angular-package/range';
 
+// Set the range.
+Range.set = { min: 3, max: 27 };
+
+// Returns {max: 27, min: 3} of type MinMax<any, any>
+Range.get;
 ```
 
 <br>
@@ -955,6 +968,11 @@ public static set value(minmax: MinMax<any, any>) {
 // Example usage.
 import { Range } from '@angular-package/range';
 
+// Set the range with the value property.
+Range.value = { min: 3, max: 27 };
+
+// Get the range with the value property.
+Range.value;
 ```
 
 <br>
@@ -974,6 +992,11 @@ public get get(): MinMax<Min, Max> {
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns an object of MinMax<9, 27> shape.
+new Range({ min: 9, max: 27 }).get;
 ```
 
 <br>
@@ -991,6 +1014,11 @@ public get max(): Max {
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns the primitive value `27` of type 27.
+new Range({ min: 9, max: 27 }).max;
 ```
 
 <br>
@@ -1008,6 +1036,11 @@ public get min(): Min {
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns the primitive value `9` of type `9`.
+new Range({ min: 9, max: 27 }).min;
 ```
 
 <br>
@@ -1047,6 +1080,11 @@ The **return value** is an instance of [`Maximum`](#maximum) with the value of p
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns an instance of `Maximum` of type Maximum<27>.
+Range.defineMaximum(27);
 ```
 
 <br>
@@ -1084,6 +1122,11 @@ The **return value** is an instance of [`Minimum`](#minimum) with the value of p
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns an instance of `Minimum` of type Minimum<9>.
+Range.defineMinimum(9);
 ```
 
 <br>
@@ -1125,6 +1168,11 @@ The **return value** is a new instance of [`Range`](#range).
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns an instance of `Range` of type Range<9, 27>.
+Range.defineRange({ min: 9, max: 27});
 ```
 
 <br>
@@ -1152,6 +1200,20 @@ The **return value** is an instance of [`Maximum`](#maximum) or [`undefined`][js
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns undefined of type Maximum<number>.
+Range.getMaximum();
+
+// Sets a maximum range to 27.
+Range.setMaximum(27)
+
+// Returns Maximum {27} of type Maximum<number>.
+Range.getMaximum();
+
+// Returns Maximum {27} of type Maximum<27>.
+Range.getMaximum<27>();
 ```
 
 <br>
@@ -1179,6 +1241,20 @@ The **return value** is an instance of [`Minimum`](#minimum) or [`undefined`][js
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns undefined of type Minimum<number>.
+Range.getMinimum();
+
+// Sets a minimum range to 9.
+Range.setMinimum(9)
+
+// Returns Minimum {9} of type Minimum<number>.
+Range.getMinimum();
+
+// Returns Minimum {9} of type Minimum<9>.
+Range.getMinimum<9>();
 ```
 
 <br>
@@ -1210,6 +1286,20 @@ The **return value** is an instance of [`Range`](#range) or [`undefined`][js-und
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns undefined of type Range<number, number>.
+Range.getRange();
+
+// Set a range.
+Range.setRange({ min: 9, max: 27 });
+
+// Returns Range { min: 9, max: 27 } of type Range<number, number>.
+Range.getRange();
+
+// Returns Range { min: 9, max: 27 } of type Range<9, 27>.
+Range.getRange<9, 27>();
 ```
 
 <br>
@@ -1243,6 +1333,17 @@ The **return value** is a static [`Range`](#range).
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Set a maximum range.
+Range.setMaximum(27);
+
+// Returns Maximum 27 of type Maximum<number>
+Range.getMaximum();
+
+// Returns Maximum 27 of type Maximum<27>
+Range.getMaximum<27>();
 ```
 
 <br>
@@ -1276,6 +1377,17 @@ The **return value** is a static [`Range`](#range).
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Set a minimum range.
+Range.setMinimum(9);
+
+// Returns Minimum 9 of type Minimum<number>
+Range.getMinimum();
+
+// Returns Minimum 9 of type Minimum<9>
+Range.getMinimum<9>();
 ```
 
 <br>
@@ -1318,6 +1430,17 @@ The **return value** is a static [`Range`](#range).
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Set a minimum range.
+Range.setRange(9);
+
+// Returns Minimum 9 of type Minimum<number>
+Range.getRange<9, 27>();
+
+// Returns Minimum 9 of type Minimum<9>
+Range.getMinimum<9>();
 ```
 
 <br>
@@ -1353,6 +1476,16 @@ The **return value** is a static [`Range`](#range).
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns an instance of Range<9, 27>
+new Range({ min: 9, max: 27}, (result, value, payload) => {
+  result // true
+  value // {min: 9, max: 27}
+  payload //{keys: Array(2)} keys: (2) ['max', 'min']
+  return result;
+});
 ```
 
 <br>
@@ -1376,6 +1509,16 @@ The **return value** is a maximum of the [`Range`](#range) of a generic type var
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns the primitive value `27` of type `27`.
+new Range({ min: 9, max: 27}, (result, value, payload) => {
+  result // true
+  value // {min: 9, max: 27}
+  payload // {keys: Array(2)} keys: (2) ['max', 'min']
+  return result;
+}).getMax();
 ```
 
 <br>
@@ -1397,6 +1540,16 @@ The **return value** is an instance of [`Maximum`](#maximum) or [`undefined`][js
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns an instance of `Maximum` of type `Maximum<27>`.
+new Range({ min: 9, max: 27}, (result, value, payload) => {
+  result // true
+  value // {min: 9, max: 27}
+  payload // {keys: Array(2)} keys: (2) ['max', 'min']
+  return result;
+}).getMaximum();
 ```
 
 <br>
@@ -1418,6 +1571,16 @@ The **return value** is a minimum of the [`Range`](#range) of a generic type var
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns the primitive value `9` of type `9`.
+new Range({ min: 9, max: 27}, (result, value, payload) => {
+  result // true
+  value // {min: 9, max: 27}
+  payload // {keys: Array(2)} keys: (2) ['max', 'min']
+  return result;
+}).getMin();
 ```
 
 <br>
@@ -1439,6 +1602,16 @@ The **return value** is an instance of [`Minimum`](#minimum) or [`undefined`][js
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns an instance of `Minimum` of type `Minimum<9>`.
+new Range({ min: 9, max: 27}, (result, value, payload) => {
+  result // true
+  value // {min: 9, max: 27}
+  payload // {keys: Array(2)} keys: (2) ['max', 'min']
+  return result;
+}).getMinimum();
 ```
 
 <br>
@@ -1460,6 +1633,16 @@ The **return value** is an [`object`][js-object] consists of the primitive value
 **Usage:**
 
 ```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns an object {max: 27, min: 9} of type `MinMax<9, 27>`.
+new Range({ min: 9, max: 27}, (result, value, payload) => {
+  result // true
+  value // {min: 9, max: 27}
+  payload // {keys: Array(2)} keys: (2) ['max', 'min']
+  return result;
+}).valueOf();
 ```
 
 <br>
