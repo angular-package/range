@@ -913,12 +913,18 @@ public static get get(): MinMax<any, any> {
 import { Range } from '@angular-package/range';
 
 // Returns undefined of type MinMax<any, any>
-const getRange = Range.get;
+Range.get;
 
-// Set the range.
-Range.set = { min: 3, max: 27 };
+// Set the minimum range.
+Range.set = { min: 9 };
 
-// Returns {max: 27, min: 3} of type MinMax<any, any>
+// Returns {min: 9} of type MinMax<any, any>
+Range.get;
+
+// Set the maximum range.
+Range.set = { max: 27 };
+
+// Returns {max: 27} of type MinMax<any, any>
 Range.get;
 ```
 
@@ -940,10 +946,10 @@ public static set set(minmax: MinMax<any, any>) {
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Set the range.
-Range.set = { min: 3, max: 27 };
+// Set the minimum range.
+Range.set = { min: 9, max: 27 };
 
-// Returns {max: 27, min: 3} of type MinMax<any, any>
+// Returns {max: 27, min: 9} of type MinMax<any, any>
 Range.get;
 ```
 
@@ -969,9 +975,9 @@ public static set value(minmax: MinMax<any, any>) {
 import { Range } from '@angular-package/range';
 
 // Set the range with the value property.
-Range.value = { min: 3, max: 27 };
+Range.value = { min: 9, max: 27 };
 
-// Get the range with the value property.
+// Returns {max: 27, min: 9} of type MinMax<any, any>
 Range.value;
 ```
 
@@ -995,7 +1001,7 @@ public get get(): MinMax<Min, Max> {
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns an object of MinMax<9, 27> shape.
+// Returns an object {max: 27, min: 9} of MinMax<9, 27> .
 new Range({ min: 9, max: 27 }).get;
 ```
 
@@ -1295,10 +1301,10 @@ Range.getRange();
 // Set a range.
 Range.setRange({ min: 9, max: 27 });
 
-// Returns Range { min: 9, max: 27 } of type Range<number, number>.
+// Returns Range {max: 27, min: 9} of type Range<number, number>.
 Range.getRange();
 
-// Returns Range { min: 9, max: 27 } of type Range<9, 27>.
+// Returns Range {max: 27, min: 9} of type Range<9, 27>.
 Range.getRange<9, 27>();
 ```
 
@@ -1433,14 +1439,11 @@ The **return value** is a static [`Range`](#range).
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Set a minimum range.
-Range.setRange(9);
+// Set a range.
+Range.setRange({min: 9, max: 27});
 
-// Returns Minimum 9 of type Minimum<number>
+// Returns an instance of `Range` of type Range<9, 27>
 Range.getRange<9, 27>();
-
-// Returns Minimum 9 of type Minimum<9>
-Range.getMinimum<9>();
 ```
 
 <br>
