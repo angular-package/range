@@ -12,7 +12,7 @@ Useful and simple to use packages based on the [angular.io][angulario].
 | [name][name-github-readme]           | The name with prefix and suffix.                       | [![npm version][name-npm-badge-png]][name-npm-badge] |
 | [prism][prism-github-readme]         | [`Prism`][prism-js] highlighter module.                | [![npm version][prism-npm-badge-png]][prism-npm-badge] |
 | [property][property-github-readme]   | Handles object properties.                             | [![npm version][property-npm-badge-png]][property-npm-badge] |
-| [range][range-github-readme]         | The range between a minimum and maximum.               | [![npm version][range-npm-badge-png]][range-npm-badge] |
+| **[range][range-github-readme]**     | **The range between a minimum and maximum.**           | [![npm version][range-npm-badge-png]][range-npm-badge] |
 | [reactive][reactive-github-readme]   | Automatize the process of creating some rxjs features. | [![npm version][reactive-npm-badge-png]][reactive-npm-badge] |
 | [storage][storage-github-readme]     | The storage of data under allowed names.               | [![npm version][storage-npm-badge-png]][storage-npm-badge] |
 | [testing][testing-github-readme]     | Support for testing other packages.                    | [![npm version][testing-npm-badge-png]][testing-npm-badge] |
