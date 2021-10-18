@@ -9,6 +9,7 @@ Useful and simple to use packages based on the [angular.io][angulario].
 | [component-loader][cl-github-readme] | Handles dynamic loading components.                    | [![npm version][cl-npm-badge-png]][cl-npm-badge] |
 | [core][core-github-readme]           | Core features.                                         | [![npm version][core-npm-badge-png]][core-npm-badge] |
 | [error][error-github-readme]         | Manages an [`Error`][js-error].                        | [![npm version][error-npm-badge-png]][error-npm-badge] |
+| [name][name-github-readme]           | The name with prefix and suffix.                       | [![npm version][name-npm-badge-png]][name-npm-badge] |
 | [prism][prism-github-readme]         | [`Prism`][prism-js] highlighter module.                | [![npm version][prism-npm-badge-png]][prism-npm-badge] |
 | [property][property-github-readme]   | Handles object properties.                             | [![npm version][property-npm-badge-png]][property-npm-badge] |
 | [range][range-github-readme]         | The range between a minimum and maximum.               | [![npm version][range-npm-badge-png]][range-npm-badge] |
@@ -1596,6 +1597,26 @@ MIT © angular-package ([license][range-license])
 
   <!-- GitHub -->
   [error-github-readme]: https://github.com/angular-package/error#readme
+
+<!-- Package: name -->
+  <!-- npm -->
+  [name-npm-badge-svg]: https://badge.fury.io/js/%40angular-package%2Fname.svg
+  [name-npm-badge-png]: https://badge.fury.io/js/%40angular-package%2Fname.png
+  [name-npm-badge]: https://badge.fury.io/js/%40angular-package%2Fname
+  [name-npm-readme]: https://www.npmjs.com/package/@angular-package/name#readme
+
+  <!-- GitHub -->
+  [name-github-readme]: https://github.com/angular-package/name#readme
+
+<!-- Package: reactive -->
+  <!-- npm -->
+  [reactive-npm-badge-svg]: https://badge.fury.io/js/%40angular-package%2Freactive.svg
+  [reactive-npm-badge-png]: https://badge.fury.io/js/%40angular-package%2Freactive.png
+  [reactive-npm-badge]: https://badge.fury.io/js/%40angular-package%2Freactive
+  [reactive-npm-readme]: https://www.npmjs.com/package/@angular-package/reactive#readme
+
+  <!-- GitHub -->
+  [reactive-github-readme]: https://github.com/angular-package/reactive#readme
 
 <!-- Package: prism -->
   <!-- npm -->
