@@ -15,22 +15,24 @@ export class Range<Min extends number, Max extends number> {
   //#region static properties.
   //#region static public properties.
   /**
-   * The static `get` property returns an `object` of the `MinMax` interface of the `Range` instance if set otherwise returns `undefined`.
+   * The static `get` property returns an `object` of the `MinMax` interface consists of the primitive values of `Minimum` and/or `Maximum`
+   * instances if set otherwise returns an empty `object`.
    */
   public static get get(): MinMax<any, any> {
     return this.#range?.get;
   }
 
   /**
-   * The static `set` property sets a new instance of `Range` with its provided object value of the `MinMax` interface.
+   * The static `set` property sets a new instance of `Range` from the assigned `object` value of the `MinMax` interface.
    */
   public static set set(minmax: MinMax<any, any>) {
     this.#range = new Range(minmax);
   }
 
   /**
-   * The static `value` property sets a new instance of `Range` with its provided value of `MinMax` interface and returns an object of
-   * `MinMax` from an instance of `Range` if set otherwise returns undefined.
+   * The static `value` property of the `MinMax` interface sets a new instance of `Range` from the assigned value and returns an `object` of
+   * the `MinMax` interface consists of the primitive values of `Minimum` and/or `Maximum` instances, from an instance of `Range` if set
+   * otherwise returns undefined.
    */
   public static get value(): MinMax<any, any> {
     return this.#range?.valueOf();
@@ -67,7 +69,8 @@ export class Range<Min extends number, Max extends number> {
 
   //#region instance properties.
   /**
-   * The `get` property of the `MinMax` interface returns an `object` from the `Range` instance.
+   * The `get` property of the `MinMax` interface returns an `object` consists of the primitive values of `Minimum` and/or `Maximum`
+   * instances if set otherwise returns an empty object.
    */
   public get get(): MinMax<Min, Max> {
     return this.#get;
@@ -98,7 +101,8 @@ export class Range<Min extends number, Max extends number> {
   }
 
   /**
-   * The private (independent) property returns an object of the `MinMax` interface.
+   * The private (independent) property returns an `object` of the `MinMax` interface consists of the primitive values of `Minimum` and/or
+   * `Maximum` instances if set otherwise returns an empty `object`.
    */
   get #get(): MinMax<any, any> {
     return {
@@ -248,6 +252,7 @@ export class Range<Min extends number, Max extends number> {
 
   //#region constructor.
   /**
+   * REVIEW:
    * Creates a new instance of `Range`.
    * @param range The required object of optional `min` and `max` properties.
    * @param callback An optional callback function of the `ResultCallback` type to handle the check whether the provided `range` is an
@@ -267,7 +272,7 @@ export class Range<Min extends number, Max extends number> {
   //#region instance public methods.
   /**
    * The `getMax()` method returns the primitive value of the `Maximum` instance if set otherwise returns `undefined`.
-   * @returns The return value is a maximum of the range of a generic type variable `Max` or `undefined`.
+   * @returns The return value is a maximum value of the range of a generic type variable `Max` or `undefined`.
    */
   public getMax(): Max {
     return this.#max?.get;
