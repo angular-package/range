@@ -329,6 +329,12 @@ public static getMaximum<Max extends number>(): Maximum<Max> {
 
 **Returns:**
 
+| Returns        | Type                  | Description |
+| :------------- | :-------------------: | :---------- |
+| `Maximum<Max>` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] of [`Maximum`](#maximum) that takes the generic type variable `Max`. |
+
+REVIEW: | `Maximum<Max>` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] as the result of its statement, indicating the `value` is a generic type variable `Type` constrained by [`AnyBoolean`](#anyboolean) by default equal to the `boolean`. |
+
 The **return value** is an instance of [`Maximum`](#maximum) if set otherwise returns [`undefined`][js-undefined].
 
 **Usage:**
@@ -378,6 +384,10 @@ public static isMaximum<Max extends number>(
 | `callback?: ResultCallback<any>` | An optional callback [`function`][js-function] of the [`ResultCallback`][package-callback-resultcallback] type to handle the result of the check whether the provided `value` is an instance of [`Maximum`](#maximum). |
 
 **Returns:**
+
+| Returns                 | Type                    | Description |
+| :---------------------- | :---------------------: | :---------- |
+| `value is Maximum<Max>` | [`boolean`][ts-boolean] | The **return type** is a [`boolean`][ts-boolean] indicating the `value` is a [`class`][ts-classes] of [`Maximum`](#maximum) that takes the generic type variable `Max`. |
 
 The **return value** is a [`boolean`][js-boolean] indicating whether the provided `value` is an instance of [`Maximum`](#maximum).
 
@@ -429,6 +439,10 @@ public static setMaximum<Max extends number>(
 | `callback?: ResultCallback<Max>` | An optional callback [`function`][js-function] of the [`ResultCallback`][package-callback-resultcallback] type to handle the result of the check whether the provided `maximum` is a [`number`][js-number] type. |
 
 **Returns:**
+
+| Returns          | Type                  | Description |
+| :--------------- | :-------------------: | :---------- |
+| `typeof Maximum` | [`class`][ts-classes] | The **return type** is  a [`class`][ts-classes] of static [`Maximum`](#maximum). |
 
 The **return value** is static [`Maximum`](#maximum).
 
@@ -529,6 +543,10 @@ public valueOf(): Max {
 ```
 
 **Returns:**
+
+| Returns | Type                  | Description |
+| :------ | :-------------------: | :---------- |
+| `Max`   | [`number`][ts-number] | A **return type** is a [`number`][ts-number] of generic type variable `Max`. |
 
 The **return value** is [`number`][js-number] of generic type variable `Max`.
 
@@ -737,6 +755,10 @@ public static getMinimum<Min extends number>(): Minimum<Min> {
 
 **Returns:**
 
+| Returns        | Type                  | Description |
+| :------------- | :-------------------: | :---------- |
+| `Minimum<Min>` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] of [`Minimum`](#minimum) that takes the generic type variable `Min`. |
+
 The **return value** is an instance of [`Minimum`](#minimum) if set otherwise returns [`undefined`][js-undefined].
 
 **Usage:**
@@ -786,6 +808,10 @@ public static isMinimum<Min extends number>(
 | `callback?: ResultCallback<any>` | An optional callback [`function`][js-function] of the [`ResultCallback`][package-callback-resultcallback] type to handle the result of the check whether the provided `value` is an instance of [`Minimum`](#minimum). |
 
 **Returns:**
+
+| Returns                 | Type                    | Description |
+| :---------------------- | :---------------------: | :---------- |
+| `value is Minimum<Min>` | [`boolean`][ts-boolean] | The **return type** is a [`boolean`][ts-boolean] indicating the `value` is a [`class`][ts-classes] of [`Minimum`](#minimum) that takes the generic type variable `Min`. |
 
 The **return value** is a [`boolean`][js-boolean] indicating whether the provided `value` is an instance of [`Minimum`](#minimum).
 
@@ -837,6 +863,10 @@ public static setMinimum<Min extends number>(
 | `callback?: ResultCallback<Min>` | An optional callback [`function`][js-function] of the [`ResultCallback`][package-callback-resultcallback] type to handle the result of the check whether the provided `minimum` is a [`number`][js-number] type. |
 
 **Returns:**
+
+| Returns          | Type                  | Description |
+| :--------------- | :-------------------: | :---------- |
+| `typeof Minimum` | [`class`][ts-classes] | The **return type** is  a [`class`][ts-classes] of static [`Minimum`](#minimum). |
 
 The **return value** is static [`Minimum`](#minimum).
 
@@ -938,6 +968,10 @@ public valueOf(): Min {
 
 **Returns:**
 
+| Returns | Type                  | Description |
+| :------ | :-------------------: | :---------- |
+| `Min`   | [`number`][ts-number] | A **return type** is a [`number`][ts-classes] of generic type variable `Min`. |
+
 The **return value** is the [`number`][js-number] of the generic type variable `Min`.
 
 **Usage:**
@@ -1016,8 +1050,8 @@ The [`Range`](#range) object represents a range between a [`number`][js-number] 
 | [`getMax()`](#rangeprototypegetmax)         | **Gets** the [primitive][js-primitive] value of the [`Maximum`](#maximum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`getMaximum()`](#rangeprototypegetmaximum) | **Gets** the [`Maximum`](#maximum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`getMin()`](#rangeprototypegetmin)         | **Gets** the [primitive][js-primitive] value of the [`Minimum`](#minimum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
-| [`getMinimum()`](#rangeprototypegetminimum) | The `getMinimum()` method returns the [`Minimum`](#minimum) instance if set otherwise returns [`undefined`][js-undefined]. |
-| [`valueOf()`](#rangeprototypevalueof)       | The `valueOf()` method returns an [`object`][js-object] of the `MinMax` interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object]. |
+| [`getMinimum()`](#rangeprototypegetminimum) | **Gets** the [`Minimum`](#minimum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
+| [`valueOf()`](#rangeprototypevalueof)       | The `valueOf()` method **returns** an [`object`][js-object] of the `MinMax` interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object]. |
 
 <br>
 
@@ -1252,6 +1286,10 @@ public static defineMaximum<Max extends number>(
 
 **Returns:**
 
+| Returns        | Type                  | Description |
+| :------------- | :-------------------: | :---------- |
+| `Maximum<Max>` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] of [`Maximum`](#maximum) that takes the generic type variable `Max`. |
+
 The **return value** is the [`Maximum`](#maximum) instance of the primitive value from the provided `max`.
 
 **Usage:**
@@ -1293,6 +1331,10 @@ public static defineMinimum<Min extends number>(
 | `callback?: ResultCallback<Min>` | An optional callback [`function`][js-function] of the [`ResultCallback`][package-callback-resultcallback] type to handle the check whether the provided `min` is a [`number`][js-number] type. |
 
 **Returns:**
+
+| Returns        | Type                  | Description |
+| :------------- | :-------------------: | :---------- |
+| `Minimum<Min>` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] of [`Minimum`](#minimum) that takes the generic type variable `Min`. |
 
 The **return value** is the [`Minimum`](#minimum) instance of the primitive value from the provided `min`.
 
@@ -1337,6 +1379,10 @@ public static defineRange<Min extends number, Max extends number>(
 
 **Returns:**
 
+| Returns           | Type                  | Description |
+| :---------------- | :-------------------: | :---------- |
+| `Range<Min, Max>` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] of [`Range`](#range) that takes the generic type variables `Min` and `Max`. |
+
 The **return value** is a new instance of [`Range`](#range).
 
 **Usage:**
@@ -1369,6 +1415,10 @@ public static getMax<Max extends number>(): Max | undefined {
 
 **Returns:**
 
+| Returns | Type                  | Description |
+| :------ | :-------------------: | :---------- |
+| `Max`   | [`number`][ts-number] | A **return type** is a [`number`][ts-classes] of generic type variable `Max` or [`undefined`][ts-undefined]. |
+
 The **return value** is a maximum value of the [`Range`](#range) of a generic type variable `Max` or [`undefined`][js-undefined].
 
 **Usage:**
@@ -1397,7 +1447,7 @@ Range.getMax<27>();
 The [`static`][js-static] `getMaximum()` method **gets** an instance of [`Maximum`](#maximum) from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined].
 
 ```typescript
-public static getMaximum<Max extends number>(): Maximum<Max> {
+public static getMaximum<Max extends number>(): Maximum<Max> | undefined {
   return this.#range?.getMaximum();
 }
 ```
@@ -1409,6 +1459,10 @@ public static getMaximum<Max extends number>(): Maximum<Max> {
 | `Max` | [`number`][ts-number] | A generic type variable `Max` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of [`Maximum`](#maximum) instance via the return type. |
 
 **Returns:**
+
+| Returns        | Type                  | Description |
+| :------------- | :-------------------: | :---------- |
+| `Maximum<Max>` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] of [`Maximum`](#maximum) that takes the generic type variable `Max`. |
 
 The **return value** is an instance of [`Maximum`](#maximum) or [`undefined`][js-undefined].
 
@@ -1451,6 +1505,10 @@ public static getMin<Min extends number>(): Min | undefined {
 
 **Returns:**
 
+| Returns | Type                  | Description |
+| :------ | :-------------------: | :---------- |
+| `Min`   | [`number`][ts-number] | A **return type** is a [`number`][ts-classes] of generic type variable `Min` or [`undefined`][ts-undefined]. |
+
 The **return value** is a minimum value of the [`Range`](#range) of a generic type variable `Min` or [`undefined`][js-undefined].
 
 **Usage:**
@@ -1492,6 +1550,10 @@ public static getMinimum<Min extends number>(): Minimum<Min> | undefined {
 
 **Returns:**
 
+| Returns        | Type                  | Description |
+| :------------- | :-------------------: | :---------- |
+| `Minimum<Min>` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] of [`Minimum`](#minimum) that takes the generic type variable `Min` or [`undefined`][ts-undefined]. |
+
 The **return value** is an instance of [`Minimum`](#minimum) or [`undefined`][js-undefined].
 
 **Usage:**
@@ -1532,10 +1594,14 @@ public static getRange<Min extends number, Max extends number>(): Range<
 
 | Name  | Default value         | Description |
 | :---- | :-------------------: | :---------- |
-| `Max` | [`number`][ts-number] | A generic type variable `Max` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of [`Maximum`](#maximum) instance via the return type. |
-| `Min` | [`number`][ts-number] | A generic type variable `Min` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of [`Minimum`](#minimum) instance via the return type. |
+| `Max` | [`number`][ts-number] | A generic type variable `Max` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of [`Range`](#range) instance via the return type. |
+| `Min` | [`number`][ts-number] | A generic type variable `Min` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of [`Range`](#range) instance via the return type. |
 
 **Returns:**
+
+| Returns           | Type                  | Description |
+| :---------------- | :-------------------: | :---------- |
+| `Range<Min, Max>` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] of [`Range`](#range) that takes the generic type variables `Min` and `Max` or [`undefined`][ts-undefined]. |
 
 The **return value** is an instance of [`Range`](#range) or [`undefined`][js-undefined].
 
@@ -1557,6 +1623,8 @@ Range.getRange();
 // Returns Range {max: 27, min: 9} of type Range<9, 27>.
 Range.getRange<9, 27>();
 ```
+
+<br>
 
 #### `Range.isRange()`
 
@@ -1586,6 +1654,10 @@ public static isRange<Min extends number, Max extends number>(
 | `callback?: ResultCallback<any>` | An optional callback [`function`][js-function] of the [`ResultCallback`][package-callback-resultcallback] type to handle the result of the check whether the provided `value` is an instance of [`Range`](#range). |
 
 **Returns:**
+
+| Returns                    | Type                    | Description |
+| :------------------------- | :---------------------: | :---------- |
+| `value is Range<Min, Max>` | [`boolean`][ts-boolean] | The **return type** is a [`boolean`][ts-boolean] indicating the `value` is a [`class`][ts-classes] of [`Range`](#range) that takes the generic type variables `Min` and `Max`. |
 
 The **return value** is a [`boolean`][js-boolean] indicating whether the provided `value` is an instance of [`Range`](#range).
 
@@ -1638,6 +1710,10 @@ public static setMaximum<Max extends number>(
 
 **Returns:**
 
+| Returns        | Type                  | Description |
+| :------------- | :-------------------: | :---------- |
+| `typeof Range` | [`class`][ts-classes] | The **return type** is  a [`class`][ts-classes] of static [`Range`](#range). |
+
 The **return value** is a static [`Range`](#range).
 
 **Usage:**
@@ -1686,6 +1762,10 @@ public static setMinimum<Min extends number>(
 | `callback?: ResultCallback<Min>` | An optional callback [`function`][js-function] of the [`ResultCallback`][package-callback-resultcallback] type to handle the result of the check whether the provided `min` is a [`number`][js-number] type. |
 
 **Returns:**
+
+| Returns        | Type                  | Description |
+| :------------- | :-------------------: | :---------- |
+| `typeof Range` | [`class`][ts-classes] | The **return type** is  a [`class`][ts-classes] of static [`Range`](#range). |
 
 The **return value** is a static [`Range`](#range).
 
@@ -1745,6 +1825,10 @@ public static setRange<Min extends number, Max extends number>(
 | `callback?: ResultCallback<MinMax<Min, Max>>` | An optional callback [`function`][js-function] of the [`ResultCallback`][package-callback-resultcallback] type to handle the result of the check whether the provided `minmax` is an [`object`][js-object] that contains `min` or `max` property. |
 
 **Returns:**
+
+| Returns        | Type                  | Description |
+| :------------- | :-------------------: | :---------- |
+| `typeof Range` | [`class`][ts-classes] | The **return type** is  a [`class`][ts-classes] of static [`Range`](#range). |
 
 The **return value** is a static [`Range`](#range).
 
@@ -1824,6 +1908,10 @@ public getMax(): Max | undefined {
 
 **Returns:**
 
+| Returns            | Type                  | Description |
+| :----------------- | :-------------------: | :---------- |
+| `Max \| undefined` | [`number`][ts-number] | A **return type** is a [`number`][ts-number] of generic type variable `Max` or [`undefined`][ts-undefined]. |
+
 The **return value** is a maximum value of the [`Range`](#range) of a generic type variable `Max` or [`undefined`][js-undefined].
 
 **Usage:**
@@ -1854,6 +1942,10 @@ public getMaximum(): Maximum<Max> | undefined {
 ```
 
 **Returns:**
+
+| Returns                     | Type                  | Description |
+| :-------------------------- | :-------------------: | :---------- |
+| `Maximum<Max> \| undefined` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] of [`Maximum`](#maximum) that takes the generic type variable `Max` or [`undefined`][ts-undefined]. |
 
 The **return value** is an instance of [`Maximum`](#maximum) or [`undefined`][js-undefined].
 
@@ -1886,6 +1978,10 @@ public getMin(): Min | undefined {
 
 **Returns:**
 
+| Returns            | Type                  | Description |
+| :----------------- | :-------------------: | :---------- |
+| `Min \| undefined` | [`number`][ts-number] | A **return type** is a [`number`][ts-number] of generic type variable `Min` or [`undefined`][ts-undefined]. |
+
 The **return value** is a minimum value of the [`Range`](#range) of a generic type variable `Min` or [`undefined`][js-undefined].
 
 **Usage:**
@@ -1907,7 +2003,7 @@ new Range({ min: 9, max: 27}, (result, value, payload) => {
 
 #### `Range.prototype.getMinimum()`
 
-Gets the [`Minimum`](#minimum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined].
+**Gets** the [`Minimum`](#minimum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined].
 
 ```typescript
 public getMinimum(): Minimum<Min> | undefined {
@@ -1916,6 +2012,10 @@ public getMinimum(): Minimum<Min> | undefined {
 ```
 
 **Returns:**
+
+| Returns                     | Type                  | Description |
+| :-------------------------- | :-------------------: | :---------- |
+| `Minimum<Min> \| undefined` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] of [`Minimum`](#minimum) that takes the generic type variable `Min` or [`undefined`][ts-undefined]. |
 
 The **return value** is an instance of [`Minimum`](#minimum) or [`undefined`][js-undefined].
 
@@ -1938,7 +2038,7 @@ new Range({ min: 9, max: 27}, (result, value, payload) => {
 
 #### `Range.prototype.valueOf()`
 
-The `valueOf()` method returns an [`object`][js-object] of the `MinMax` interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object].
+The `valueOf()` method **returns** an [`object`][js-object] of the `MinMax` interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object].
 
 ```typescript
 public valueOf(): MinMax<Min, Max> {
@@ -1947,6 +2047,10 @@ public valueOf(): MinMax<Min, Max> {
 ```
 
 **Returns:**
+
+| Returns            | Type                  | Description |
+| :----------------- | :-------------------: | :---------- |
+| `MinMax<Min, Max>` | [`object`][ts-object] | The **return type** is an [`object`][ts-object] of [`MinMax`][package-type-minmax] interface that takes the generic type variables `Min` and `Max`. |
 
 The **return value** is an [`object`][js-object] consists of the [primitive][js-primitive] values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances or an empty [`object`][js-object].
 
@@ -2191,11 +2295,12 @@ MIT © angular-package ([license][range-license])
   <!-- GitHub -->
   [type-github-readme]: https://github.com/angular-package/type#readme
 
-  [package-type-valueparser]: https://github.com/angular-package/type#valueparser
   [package-type-key]: https://github.com/angular-package/type#key
+  [package-type-minmax]: https://github.com/angular-package/type#minmax
   [package-type-resultcallback]: https://github.com/angular-package/type#resultcallback
   [package-type-type]: https://github.com/angular-package/type#type
   [package-type-types]: https://github.com/angular-package/type#types
+  [package-type-valueparser]: https://github.com/angular-package/type#valueparser
 
 <!-- Package: ui -->
   <!-- npm -->
@@ -2294,7 +2399,9 @@ MIT © angular-package ([license][range-license])
 [ts-function]: https://www.typescriptlang.org/docs/handbook/2/functions.html
 [ts-interface]: https://www.typescriptlang.org/docs/handbook/interfaces.html#our-first-interface
 [ts-never]: https://www.typescriptlang.org/docs/handbook/basic-types.html#never
+[ts-null]: https://www.typescriptlang.org/docs/handbook/basic-types.html#null-and-undefined
 [ts-number]: https://www.typescriptlang.org/docs/handbook/basic-types.html#number
 [ts-object]: https://www.typescriptlang.org/docs/handbook/basic-types.html#object
 [ts-string]: https://www.typescriptlang.org/docs/handbook/basic-types.html#string
+[ts-undefined]: https://www.typescriptlang.org/docs/handbook/basic-types.html#null-and-undefined
 [ts-unknown]: https://www.typescriptlang.org/docs/handbook/basic-types.html#unknown
