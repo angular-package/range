@@ -333,8 +333,6 @@ public static getMaximum<Max extends number>(): Maximum<Max> {
 | :------------- | :-------------------: | :---------- |
 | `Maximum<Max>` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] of [`Maximum`](#maximum) that takes the generic type variable `Max`. |
 
-REVIEW: | `Maximum<Max>` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] as the result of its statement, indicating the `value` is a generic type variable `Type` constrained by [`AnyBoolean`](#anyboolean) by default equal to the `boolean`. |
-
 The **return value** is an instance of [`Maximum`](#maximum) if set otherwise returns [`undefined`][js-undefined].
 
 **Usage:**
@@ -998,10 +996,10 @@ The [`Range`](#range) object represents a range between a [`number`][js-number] 
 
 | Range.                 | Description |
 | :--------------------- | :---------- |
-| [`get`](#rangeget)     | Gets a [`MinMax`][package-type-minmax] interface [`object`][js-object] consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances from the [`Range`](#range) instance if set otherwise returns an empty [`object`][js-object]. |
-| [`max`](#rangemax)     | Gets the [primitive][js-primitive] value of the [`Maximum`](#maximum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
-| [`min`](#rangemin)     | Gets the [primitive][js-primitive] value of the [`Minimum`](#minimum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
-| [`set`](#rangeset)     | The [`static`][js-static] `set` property **sets** a new instance of [`Range`](#range) from the assigned value of the [`MinMax`][package-type-minmax] [`object`][js-object]. |
+| [`get`](#rangeget)     | **Gets** a [`MinMax`][package-type-minmax] interface [`object`][js-object] consisting of the [primitive][js-primitive] values of  [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances from the [`Range`](#range) instance if set otherwise returns an empty [`object`][js-object]. |
+| [`max`](#rangemax)     | **Gets** the [primitive][js-primitive] value of the [`Maximum`](#maximum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
+| [`min`](#rangemin)     | **Gets** the [primitive][js-primitive] value of the [`Minimum`](#minimum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
+| [`set`](#rangeset)     | The [`static`][js-static] `set` property **sets** a new instance of [`Range`](#range) from the assigned value of the [`MinMax`][package-type-minmax] [`object`][js-object] or the stored [primitive][js-primitive] values from the [`Minimum`](#minimum) and a [`Maximum`](#maximum) instances of static [`Range`](#range). |
 | [`value`](#rangevalue) | The [`static`][js-static] `value` property of the [`MinMax`][package-type-minmax] interface **sets** a new instance of [`Range`](#range) from the assigned value and **returns** an [`object`][js-object] of the [`MinMax`][package-type-minmax] interface consists of the [primitive][js-primitive] values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances, from an instance of [`Range`](#range) if set otherwise returns [`undefined`][js-undefined]. |
 
 <br>
@@ -1031,7 +1029,7 @@ The [`Range`](#range) object represents a range between a [`number`][js-number] 
 | [`isRange()`](#rangeisrange)             | The [`static`][js-static] `isRange()` method **returns** the result of the check whether the provided `value` is an instance of [`Range`](#range). |
 | [`setMaximum()`](#rangesetmaximum)       | The [`static`][js-static] `setMaximum()` method **sets** the [`Maximum`](#maximum) instance with the provided `maximum`. |
 | [`setMinimum()`](#rangesetminimum)       | The [`static`][js-static] `setMinimum()` method **sets** the [`Minimum`](#minimum) instance with the provided `minimum`. |
-| [`setRange()`](#rangesetrange)           | The [`static`][js-static] `setRange()` method **sets** a new instance of [`Range`](#range) with the provided [`MinMax`][package-type-minmax] parameter or stored [primitive][js-primitive] values from the [`Minimum`](#minimum) and a [`Maximum`](#maximum) instances of static [`Range`](#range). |
+| [`setRange()`](#rangesetrange)           | The [`static`][js-static] `setRange()` method **sets** a new instance of [`Range`](#range) with the provided [`MinMax`][package-type-minmax] parameter and the stored [primitive][js-primitive] values from the [`Minimum`](#minimum) and a [`Maximum`](#maximum) instances of static [`Range`](#range). |
 
 <br>
 
@@ -1051,7 +1049,7 @@ The [`Range`](#range) object represents a range between a [`number`][js-number] 
 | [`getMaximum()`](#rangeprototypegetmaximum) | **Gets** the [`Maximum`](#maximum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`getMin()`](#rangeprototypegetmin)         | **Gets** the [primitive][js-primitive] value of the [`Minimum`](#minimum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`getMinimum()`](#rangeprototypegetminimum) | **Gets** the [`Minimum`](#minimum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
-| [`valueOf()`](#rangeprototypevalueof)       | The `valueOf()` method **returns** an [`object`][js-object] of the [`MinMax`][package-type-minmax] interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object]. |
+| [`valueOf()`](#rangeprototypevalueof)       | The `valueOf()` method **returns** the [`MinMax`][package-type-minmax] interface [`object`][js-object] consisting of the [primitive][js-primitive] values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object]. |
 
 <br>
 
@@ -1059,7 +1057,7 @@ The [`Range`](#range) object represents a range between a [`number`][js-number] 
 
 #### `Range.get`
 
-Gets an [`object`][js-object] of the [`MinMax`][package-type-minmax] interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances from the [`Range`](#range) instance if set otherwise returns an empty [`object`][js-object].
+**Gets** a [`MinMax`][package-type-minmax] interface [`object`][js-object] consisting of the [primitive][js-primitive] values of  [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances from the [`Range`](#range) instance if set otherwise returns an empty [`object`][js-object].
 
 ```typescript
 public static get get(): MinMax<any, any> {
@@ -1093,10 +1091,10 @@ Range.get;
 
 #### `Range.max`
 
-Gets the primitive value of the [`Maximum`](#maximum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined].
+**Gets** the [primitive][js-primitive] value of the [`Maximum`](#maximum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined].
 
 ```typescript
-public static get max(): number {
+public static get max(): number | undefined {
   return this.#range?.get?.max;
 }
 ```
@@ -1107,18 +1105,21 @@ public static get max(): number {
 // Example usage.
 import { Range } from '@angular-package/range';
 
-TODO: usage
+// Set a new instance of `Range` with the maximum `27`.
+Range.set = { max: 27 };
 
+// Returns `27` of type `number | undefined`
+Range.max;
 ```
 
 <br>
 
 #### `Range.min`
 
-Gets the [primitive][js-primitive] value of the [`Minimum`](#minimum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined].
+**Gets** the [primitive][js-primitive] value of the [`Minimum`](#minimum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined].
 
 ```typescript
-public static get min(): number {
+public static get min(): number | undefined {
   return this.#range?.get?.min;
 }
 ```
@@ -1129,19 +1130,22 @@ public static get min(): number {
 // Example usage.
 import { Range } from '@angular-package/range';
 
-TODO: usage
+// Set a new instance of `Range` with the minimum `9`.
+Range.set = { min: 9 };
 
+// Returns `9` of type `number | undefined`
+Range.min;
 ```
 
 <br>
 
 #### `Range.set`
 
-The [`static`][js-static] `set` property **sets** a new instance of [`Range`](#range) from the assigned value of the [`MinMax`][package-type-minmax] [`object`][js-object].
+The [`static`][js-static] `set` property **sets** a new instance of [`Range`](#range) from the assigned value of the [`MinMax`][package-type-minmax] [`object`][js-object] or the stored [primitive][js-primitive] values from the [`Minimum`](#minimum) and a [`Maximum`](#maximum) instances of static [`Range`](#range).
 
 ```typescript
 public static set set(minmax: MinMax<any, any>) {
-  this.#range = new Range(minmax);
+  this.setRange(minmax);
 }
 ```
 
@@ -1154,7 +1158,7 @@ import { Range } from '@angular-package/range';
 // Set the minimum range.
 Range.set = { min: 9, max: 27 };
 
-// Returns {max: 27, min: 9} of type MinMax<any, any>
+// Returns `{max: 27, min: 9} `of type `MinMax<any, any>`
 Range.get;
 ```
 
@@ -1182,7 +1186,7 @@ import { Range } from '@angular-package/range';
 // Set the range with the value property.
 Range.value = { min: 9, max: 27 };
 
-// Returns {max: 27, min: 9} of type MinMax<any, any>
+// Returns `{max: 27, min: 9}` of type `MinMax<any, any>`
 Range.value;
 ```
 
@@ -1206,7 +1210,7 @@ public get get(): MinMax<Min, Max> {
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns an object {max: 27, min: 9} of MinMax<9, 27> .
+// Returns an object `{max: 27, min: 9}` of `MinMax<9, 27>`.
 new Range({ min: 9, max: 27 }).get;
 ```
 
@@ -1217,7 +1221,7 @@ new Range({ min: 9, max: 27 }).get;
 The `max` property of generic type variable `Max` returns the [primitive][js-primitive] value of the [`Maximum`](#maximum) instance if set otherwise returns [`undefined`][js-undefined].
 
 ```typescript
-public get max(): Max {
+public get max(): Max | undefined {
   return this.#maximum?.get;
 }
 ```
@@ -1228,8 +1232,11 @@ public get max(): Max {
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns the primitive value `27` of type 27.
+// Returns the primitive value `27` of type `27`.
 new Range({ min: 9, max: 27 }).max;
+
+// Returns the primitive value `undefined` of type `number | undefined`.
+new Range({ max: 27 }).min;
 ```
 
 <br>
@@ -1239,7 +1246,7 @@ new Range({ min: 9, max: 27 }).max;
 The `min` property of generic type variable `Min` returns the [primitive][js-primitive] value of the [`Minimum`](#minimum) instance if set otherwise returns [`undefined`][js-undefined].
 
 ```typescript
-public get min(): Min {
+public get min(): Min | undefined {
   return this.#minimum?.get;
 }
 ```
@@ -1290,7 +1297,7 @@ public static defineMaximum<Max extends number>(
 | :------------- | :-------------------: | :---------- |
 | `Maximum<Max>` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] of [`Maximum`](#maximum) that takes the generic type variable `Max`. |
 
-The **return value** is the [`Maximum`](#maximum) instance of the primitive value from the provided `max`.
+The **return value** is the [`Maximum`](#maximum) instance of the [primitive][js-primitive] value from the provided `max`.
 
 **Usage:**
 
@@ -1298,7 +1305,7 @@ The **return value** is the [`Maximum`](#maximum) instance of the primitive valu
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns an instance of `Maximum` of type Maximum<27>.
+// Returns an instance of `Maximum` of type `Maximum<27>`.
 Range.defineMaximum(27);
 ```
 
@@ -1336,7 +1343,7 @@ public static defineMinimum<Min extends number>(
 | :------------- | :-------------------: | :---------- |
 | `Minimum<Min>` | [`class`][ts-classes] | The **return type** is a [`class`][ts-classes] of [`Minimum`](#minimum) that takes the generic type variable `Min`. |
 
-The **return value** is the [`Minimum`](#minimum) instance of the primitive value from the provided `min`.
+The **return value** is the [`Minimum`](#minimum) instance of the [primitive][js-primitive] value from the provided `min`.
 
 **Usage:**
 
@@ -1344,7 +1351,7 @@ The **return value** is the [`Minimum`](#minimum) instance of the primitive valu
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns an instance of `Minimum` of type Minimum<9>.
+// Returns an instance of `Minimum` of type `Minimum<9>`.
 Range.defineMinimum(9);
 ```
 
@@ -1391,7 +1398,7 @@ The **return value** is a new instance of [`Range`](#range).
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns an instance of `Range` of type Range<9, 27>.
+// Returns an instance of `Range` of type `Range<9, 27>`.
 Range.defineRange({ min: 9, max: 27});
 ```
 
@@ -1411,13 +1418,13 @@ public static getMax<Max extends number>(): Max | undefined {
 
 | Name  | Default value         | Description |
 | :---- | :-------------------: | :---------- |
-| `Max` | [`number`][ts-number] | A generic type variable `Max` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of [`Maximum`](#maximum) instance via the return type. |
+| `Max` | [`number`][ts-number] | A generic type variable `Max` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] maximum value via the return type `Max | undefined`. |
 
 **Returns:**
 
-| Returns | Type                  | Description |
-| :------ | :-------------------: | :---------- |
-| `Max`   | [`number`][ts-number] | A **return type** is a [`number`][ts-classes] of generic type variable `Max` or [`undefined`][ts-undefined]. |
+| Returns              | Type                  | Description |
+| :------------------- | :-------------------: | :---------- |
+| `Max \| undefined`   | [`number`][ts-number] | A **return type** is a [`number`][ts-classes] of generic type variable `Max` or [`undefined`][ts-undefined]. |
 
 The **return value** is a maximum value of the [`Range`](#range) of a generic type variable `Max` or [`undefined`][js-undefined].
 
@@ -1427,16 +1434,16 @@ The **return value** is a maximum value of the [`Range`](#range) of a generic ty
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns undefined of type Maximum<number>.
+// Returns `undefined` of type `number | undefined`.
 Range.getMax();
 
-// Sets a maximum range to 27.
-Range.setMaximum(27)
+// Sets a maximum range to `27`.
+Range.setMaximum(27);
 
-// Returns Maximum {27} of type Maximum<number>.
+// Returns `27` of type `number | undefined`.
 Range.getMax();
 
-// Returns Maximum {27} of type Maximum<27>.
+// Returns `27` of type `27 | undefined`.
 Range.getMax<27>();
 ```
 
@@ -1472,16 +1479,16 @@ The **return value** is an instance of [`Maximum`](#maximum) or [`undefined`][js
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns undefined of type Maximum<number>.
+// Returns `undefined` of type `Maximum<number> | undefined`.
 Range.getMaximum();
 
-// Sets a maximum range to 27.
-Range.setMaximum(27)
+// Sets a maximum range to `27`.
+Range.setMaximum(27);
 
-// Returns Maximum {27} of type Maximum<number>.
+// Returns `Maximum {27}` of type `Maximum<number> | undefined`.
 Range.getMaximum();
 
-// Returns Maximum {27} of type Maximum<27>.
+// Returns `Maximum {27}` of type `Maximum<27> | undefined`.
 Range.getMaximum<27>();
 ```
 
@@ -1501,7 +1508,7 @@ public static getMin<Min extends number>(): Min | undefined {
 
 | Name  | Default value         | Description |
 | :---- | :-------------------: | :---------- |
-| `Min` | [`number`][ts-number] | A generic type variable `Min` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of [`Minimum`](#minimum) instance via the return type. |
+| `Min` | [`number`][ts-number] | A generic type variable `Min` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] minimum value via the return type `Min | undefined`. |
 
 **Returns:**
 
@@ -1517,16 +1524,16 @@ The **return value** is a minimum value of the [`Range`](#range) of a generic ty
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns undefined of type Minimum<number>.
+// Returns `undefined` of type `number | undefined`.
 Range.getMin();
 
-// Sets a minimum range to 9.
-Range.setMinimum(9)
+// Sets a maximum range to `9`.
+Range.setMinimum(9);
 
-// Returns Minimum {9} of type Minimum<number>.
+// Returns `9` of type `number | undefined`.
 Range.getMin();
 
-// Returns Minimum {9} of type Minimum<9>.
+// Returns `9` of type `9 | undefined`.
 Range.getMin<9>();
 ```
 
@@ -1546,7 +1553,7 @@ public static getMinimum<Min extends number>(): Minimum<Min> | undefined {
 
 | Name  | Default value         | Description |
 | :---- | :-------------------: | :---------- |
-| `Min` | [`number`][ts-number] | A generic type variable `Min` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of [`Minimum`](#minimum) instance via the return type. |
+| `Min` | [`number`][ts-number] | A generic type variable `Min` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of [`Minimum`](#minimum) instance via the return type `Minimum<Min> | undefined`. |
 
 **Returns:**
 
@@ -1562,16 +1569,16 @@ The **return value** is an instance of [`Minimum`](#minimum) or [`undefined`][js
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns undefined of type Minimum<number>.
+// Returns `undefined` of type `Minimum<number> | undefined`.
 Range.getMinimum();
 
-// Sets a minimum range to 9.
-Range.setMinimum(9)
+// Sets a minimum range to `9`.
+Range.setMinimum(9);
 
-// Returns Minimum {9} of type Minimum<number>.
+// Returns `Minimum {9}` of type `Minimum<number> | undefined`.
 Range.getMinimum();
 
-// Returns Minimum {9} of type Minimum<9>.
+// Returns `Minimum {9}` of type `Minimum<9> | undefined`
 Range.getMinimum<9>();
 ```
 
@@ -1594,8 +1601,8 @@ public static getRange<Min extends number, Max extends number>(): Range<
 
 | Name  | Default value         | Description |
 | :---- | :-------------------: | :---------- |
-| `Max` | [`number`][ts-number] | A generic type variable `Max` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of [`Range`](#range) instance via the return type. |
-| `Min` | [`number`][ts-number] | A generic type variable `Min` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of [`Range`](#range) instance via the return type. |
+| `Max` | [`number`][ts-number] | A generic type variable `Max` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of [`Range`](#range) instance via the return type `Range<Min, Max>`. |
+| `Min` | [`number`][ts-number] | A generic type variable `Min` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of [`Range`](#range) instance via the return type `Range<Min, Max>`. |
 
 **Returns:**
 
@@ -1611,16 +1618,16 @@ The **return value** is an instance of [`Range`](#range) or [`undefined`][js-und
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns undefined of type Range<number, number>.
+// Returns `undefined` of type `Range<number, number>`.
 Range.getRange();
 
 // Set a range.
 Range.setRange({ min: 9, max: 27 });
 
-// Returns Range {max: 27, min: 9} of type Range<number, number>.
+// Returns `Range {max: 27, min: 9}` of type `Range<number, number>`.
 Range.getRange();
 
-// Returns Range {max: 27, min: 9} of type Range<9, 27>.
+// Returns `Range {max: 27, min: 9}` of type `Range<9, 27>`.
 Range.getRange<9, 27>();
 ```
 
@@ -1667,14 +1674,14 @@ The **return value** is a [`boolean`][js-boolean] indicating whether the provide
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns true.
-Maximum.isRange(new Maximum(27));
+// Returns `true`.
+Range.isRange(new Range({ min: 9, max: 27 }));
 
-const value: any = new Maximum(27);
+const value: any = new Range({ min: 9, max: 27 });
 
-// Returns true.
-if (Maximum.isMaximum<27>(value)) {
-  // Returns Maximum {27} of type Maximum<27>
+// Returns `true`.
+if (Range.isRange<9, 27>(value)) {
+  // Returns Range {} of type `Range<9, 27>`.
   value;
 }
 ```
@@ -1725,10 +1732,10 @@ import { Range } from '@angular-package/range';
 // Set a maximum range.
 Range.setMaximum(27);
 
-// Returns Maximum 27 of type Maximum<number>
+// Returns `Maximum {27}` of type `Maximum<number> | undefined`.
 Range.getMaximum();
 
-// Returns Maximum 27 of type Maximum<27>
+// Returns `Maximum {27}` of type `Maximum<27> | undefined`.
 Range.getMaximum<27>();
 ```
 
@@ -1778,10 +1785,10 @@ import { Range } from '@angular-package/range';
 // Set a minimum range.
 Range.setMinimum(9);
 
-// Returns Minimum 9 of type Minimum<number>
+// Returns `Minimum {9}` of type `Minimum<number> | undefined`
 Range.getMinimum();
 
-// Returns Minimum 9 of type Minimum<9>
+// Returns `Minimum {9}` of type `Minimum<9> | undefined`.
 Range.getMinimum<9>();
 ```
 
@@ -1789,7 +1796,7 @@ Range.getMinimum<9>();
 
 #### `Range.setRange()`
 
-The [`static`][js-static] `setRange()` method **sets** a new instance of [`Range`](#range) with the provided [`MinMax`][package-type-minmax] parameter or stored [primitive][js-primitive] values from the [`Minimum`](#minimum) and a [`Maximum`](#maximum) instances of static [`Range`](#range).
+The [`static`][js-static] `setRange()` method **sets** a new instance of [`Range`](#range) with the provided [`MinMax`][package-type-minmax] parameter and the stored [primitive][js-primitive] values from the [`Minimum`](#minimum) and a [`Maximum`](#maximum) instances of static [`Range`](#range).
 
 ```typescript
 public static setRange<Min extends number, Max extends number>(
@@ -1814,8 +1821,8 @@ public static setRange<Min extends number, Max extends number>(
 
 | Name  | Default value                       | Description |
 | :---- | :---------------------------------: | :---------- |
-| `Min` | Captured from the `min` of `minmax` | A generic type variable `Min` constrained by the [`number`][ts-number] type, by default of the value captured from the `min` property of supplied `minmax` parameter indicates the **type** of its [`MinMax`][package-type-minmax] interface. |
-| `Max` | Captured from the `max` of `minmax` | A generic type variable `Max` constrained by the [`number`][ts-number] type, by default of the value captured from the `max` property of supplied `minmax` parameter indicates the **type** of its [`MinMax`][package-type-minmax] interface. |
+| `Min` | Captured from the `min` of `minmax` | A generic type variable `Min` constrained by the [`number`][ts-number] type, by default of the value captured from the `min` property of the supplied `minmax` parameter indicates the **type** of [`MinMax`][package-type-minmax] interface for the `minmax` parameter and `value` parameter of the supplied [`ResultCallback`][package-callback-resultcallback] function. |
+| `Max` | Captured from the `max` of `minmax` | A generic type variable `Max` constrained by the [`number`][ts-number] type, by default of the value captured from the `max` property of the supplied `minmax` parameter indicates the **type** of [`MinMax`][package-type-minmax] interface for the `minmax` parameter and `value` parameter of the supplied [`ResultCallback`][package-callback-resultcallback] function. |
 
 **Parameters:**
 
@@ -1841,7 +1848,7 @@ import { Range } from '@angular-package/range';
 // Set a range.
 Range.setRange({min: 9, max: 27});
 
-// Returns an instance of `Range` of type Range<9, 27>
+// Returns an instance of `Range` of type `Range<9, 27>`.
 Range.getRange<9, 27>();
 ```
 
@@ -1855,7 +1862,7 @@ Creates a new instance of [`Range`](#range).
 
 ```typescript
 constructor(
-  range: MinMax<Min, Max> = {},
+  range: MinMax<Min, Max>,
   callback?: ResultCallback<MinMax<Min, Max>>
 ) {
   guardObjectSomeKeys(range, ['max', 'min'], callback) &&
@@ -1870,7 +1877,7 @@ constructor(
 
 | Name: type                                    | Description |
 | :-------------------------------------------- | :---------- |
-| `minmax: MinMax<Min, Max>`                    | The **required** [`object`][js-object] of optional `min` and `max` properties. |
+| `minmax: MinMax<Min, Max>`                    | The **required** [`MinMax`][package-type-minmax] [`object`][js-object] of optional `min` and `max` properties to create a new instance. |
 | `callback?: ResultCallback<MinMax<Min, Max>>` | An optional callback [`function`][js-function] of the [`ResultCallback`][package-callback-resultcallback] type to handle the result of the check whether the provided `minmax` is an [`object`][js-object] that contains `min` or `max` property. |
 
 **Returns:**
@@ -1883,7 +1890,7 @@ The **return value** is a new instance of [`Range`](#range).
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns an instance of Range<9, 27>
+// Returns an instance of `Range<9, 27>`.
 new Range({ min: 9, max: 27}, (result, value, payload) => {
   result // true
   value // {min: 9, max: 27}
@@ -1912,7 +1919,7 @@ public getMax(): Max | undefined {
 | :----------------- | :-------------------: | :---------- |
 | `Max \| undefined` | [`number`][ts-number] | A **return type** is a [`number`][ts-number] of generic type variable `Max` or [`undefined`][ts-undefined]. |
 
-The **return value** is a maximum value of the [`Range`](#range) of a generic type variable `Max` or [`undefined`][js-undefined].
+The **return value** is the [primitive][js-primitive] maximum value of the [`Range`](#range) of a generic type variable `Max` or [`undefined`][js-undefined].
 
 **Usage:**
 
@@ -1920,7 +1927,7 @@ The **return value** is a maximum value of the [`Range`](#range) of a generic ty
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns the primitive value `27` of type `27`.
+// Returns the primitive value `27` of type `27 | undefined`.
 new Range({ min: 9, max: 27}, (result, value, payload) => {
   result // true
   value // {min: 9, max: 27}
@@ -1955,7 +1962,7 @@ The **return value** is an instance of [`Maximum`](#maximum) or [`undefined`][js
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns an instance of `Maximum` of type `Maximum<27>`.
+// Returns an instance of `Maximum` of type `Maximum<27> | undefined`.
 new Range({ min: 9, max: 27}, (result, value, payload) => {
   result // true
   value // {min: 9, max: 27}
@@ -1982,7 +1989,7 @@ public getMin(): Min | undefined {
 | :----------------- | :-------------------: | :---------- |
 | `Min \| undefined` | [`number`][ts-number] | A **return type** is a [`number`][ts-number] of generic type variable `Min` or [`undefined`][ts-undefined]. |
 
-The **return value** is a minimum value of the [`Range`](#range) of a generic type variable `Min` or [`undefined`][js-undefined].
+The **return value** is the [primitive][js-primitive] minimum value of the [`Range`](#range) of a generic type variable `Min` or [`undefined`][js-undefined].
 
 **Usage:**
 
@@ -1990,7 +1997,7 @@ The **return value** is a minimum value of the [`Range`](#range) of a generic ty
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns the primitive value `9` of type `9`.
+// Returns the primitive value `9` of type `9 | undefined`.
 new Range({ min: 9, max: 27}, (result, value, payload) => {
   result // true
   value // {min: 9, max: 27}
@@ -2025,7 +2032,7 @@ The **return value** is an instance of [`Minimum`](#minimum) or [`undefined`][js
 // Example usage.
 import { Range } from '@angular-package/range';
 
-// Returns an instance of `Minimum` of type `Minimum<9>`.
+// Returns an instance of `Minimum` of type `Minimum<9> | undefined`.
 new Range({ min: 9, max: 27}, (result, value, payload) => {
   result // true
   value // {min: 9, max: 27}
@@ -2038,11 +2045,11 @@ new Range({ min: 9, max: 27}, (result, value, payload) => {
 
 #### `Range.prototype.valueOf()`
 
-The `valueOf()` method **returns** an [`object`][js-object] of the [`MinMax`][package-type-minmax] interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object].
+The `valueOf()` method **returns** the [`MinMax`][package-type-minmax] interface [`object`][js-object] consisting of the [primitive][js-primitive] values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object].
 
 ```typescript
 public valueOf(): MinMax<Min, Max> {
-  return this.#get;
+  return this.#minmax;
 }
 ```
 
@@ -2052,7 +2059,7 @@ public valueOf(): MinMax<Min, Max> {
 | :----------------- | :-------------------: | :---------- |
 | `MinMax<Min, Max>` | [`object`][ts-object] | The **return type** is an [`object`][ts-object] of [`MinMax`][package-type-minmax] interface that takes the generic type variables `Min` and `Max`. |
 
-The **return value** is an [`object`][js-object] consists of the [primitive][js-primitive] values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances or an empty [`object`][js-object].
+The **return value** is an [`object`][js-object] that consists of the [primitive][js-primitive] values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances or an empty [`object`][js-object].
 
 **Usage:**
 
