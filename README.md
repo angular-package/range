@@ -998,11 +998,11 @@ The [`Range`](#range) object represents a range between a [`number`][js-number] 
 
 | Range.                 | Description |
 | :--------------------- | :---------- |
-| [`get`](#rangeget)     | Gets a `MinMax` interface [`object`][js-object] consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances from the [`Range`](#range) instance if set otherwise returns an empty [`object`][js-object]. |
+| [`get`](#rangeget)     | Gets a [`MinMax`][package-type-minmax] interface [`object`][js-object] consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances from the [`Range`](#range) instance if set otherwise returns an empty [`object`][js-object]. |
 | [`max`](#rangemax)     | Gets the [primitive][js-primitive] value of the [`Maximum`](#maximum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`min`](#rangemin)     | Gets the [primitive][js-primitive] value of the [`Minimum`](#minimum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
-| [`set`](#rangeset)     | The [`static`][js-static] `set` property **sets** a new instance of [`Range`](#range) from the assigned value of the `MinMax` [`object`][js-object]. |
-| [`value`](#rangevalue) | The [`static`][js-static] `value` property of the `MinMax` interface **sets** a new instance of [`Range`](#range) from the assigned value and **returns** an [`object`][js-object] of the `MinMax` interface consists of the [primitive][js-primitive] values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances, from an instance of [`Range`](#range) if set otherwise returns [`undefined`][js-undefined]. |
+| [`set`](#rangeset)     | The [`static`][js-static] `set` property **sets** a new instance of [`Range`](#range) from the assigned value of the [`MinMax`][package-type-minmax] [`object`][js-object]. |
+| [`value`](#rangevalue) | The [`static`][js-static] `value` property of the [`MinMax`][package-type-minmax] interface **sets** a new instance of [`Range`](#range) from the assigned value and **returns** an [`object`][js-object] of the [`MinMax`][package-type-minmax] interface consists of the [primitive][js-primitive] values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances, from an instance of [`Range`](#range) if set otherwise returns [`undefined`][js-undefined]. |
 
 <br>
 
@@ -1010,7 +1010,7 @@ The [`Range`](#range) object represents a range between a [`number`][js-number] 
 
 | Range.prototype.            | Description |
 | :-------------------------- | :---------- |
-| [`get`](#rangeprototypeget) | Gets a `MinMax` interface [`object`][js-object] consisting of the [primitive][js-primitive] values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set otherwise returns an empty [`object`][js-object]. |
+| [`get`](#rangeprototypeget) | Gets a [`MinMax`][package-type-minmax] interface [`object`][js-object] consisting of the [primitive][js-primitive] values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set otherwise returns an empty [`object`][js-object]. |
 | [`max`](#rangeprototypemax) | The `max` property of generic type variable `Max` returns the [primitive][js-primitive] value of the [`Maximum`](#maximum) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`min`](#rangeprototypemin) | The `min` property of generic type variable `Min` returns the [primitive][js-primitive] value of the [`Minimum`](#minimum) instance if set otherwise returns [`undefined`][js-undefined]. |
 
@@ -1031,7 +1031,7 @@ The [`Range`](#range) object represents a range between a [`number`][js-number] 
 | [`isRange()`](#rangeisrange)             | The [`static`][js-static] `isRange()` method **returns** the result of the check whether the provided `value` is an instance of [`Range`](#range). |
 | [`setMaximum()`](#rangesetmaximum)       | The [`static`][js-static] `setMaximum()` method **sets** the [`Maximum`](#maximum) instance with the provided `maximum`. |
 | [`setMinimum()`](#rangesetminimum)       | The [`static`][js-static] `setMinimum()` method **sets** the [`Minimum`](#minimum) instance with the provided `minimum`. |
-| [`setRange()`](#rangesetrange)           | The [`static`][js-static] `setRange()` method **sets** a new instance of [`Range`](#range) with the provided `MinMax` parameter or stored [primitive][js-primitive] values from the [`Minimum`](#minimum) and a [`Maximum`](#maximum) instances of static [`Range`](#range). |
+| [`setRange()`](#rangesetrange)           | The [`static`][js-static] `setRange()` method **sets** a new instance of [`Range`](#range) with the provided [`MinMax`][package-type-minmax] parameter or stored [primitive][js-primitive] values from the [`Minimum`](#minimum) and a [`Maximum`](#maximum) instances of static [`Range`](#range). |
 
 <br>
 
@@ -1051,7 +1051,7 @@ The [`Range`](#range) object represents a range between a [`number`][js-number] 
 | [`getMaximum()`](#rangeprototypegetmaximum) | **Gets** the [`Maximum`](#maximum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`getMin()`](#rangeprototypegetmin)         | **Gets** the [primitive][js-primitive] value of the [`Minimum`](#minimum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`getMinimum()`](#rangeprototypegetminimum) | **Gets** the [`Minimum`](#minimum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
-| [`valueOf()`](#rangeprototypevalueof)       | The `valueOf()` method **returns** an [`object`][js-object] of the `MinMax` interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object]. |
+| [`valueOf()`](#rangeprototypevalueof)       | The `valueOf()` method **returns** an [`object`][js-object] of the [`MinMax`][package-type-minmax] interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object]. |
 
 <br>
 
@@ -1059,7 +1059,7 @@ The [`Range`](#range) object represents a range between a [`number`][js-number] 
 
 #### `Range.get`
 
-Gets an [`object`][js-object] of the `MinMax` interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances from the [`Range`](#range) instance if set otherwise returns an empty [`object`][js-object].
+Gets an [`object`][js-object] of the [`MinMax`][package-type-minmax] interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances from the [`Range`](#range) instance if set otherwise returns an empty [`object`][js-object].
 
 ```typescript
 public static get get(): MinMax<any, any> {
@@ -1137,7 +1137,7 @@ TODO: usage
 
 #### `Range.set`
 
-The [`static`][js-static] `set` property **sets** a new instance of [`Range`](#range) from the assigned value of the `MinMax` [`object`][js-object].
+The [`static`][js-static] `set` property **sets** a new instance of [`Range`](#range) from the assigned value of the [`MinMax`][package-type-minmax] [`object`][js-object].
 
 ```typescript
 public static set set(minmax: MinMax<any, any>) {
@@ -1162,7 +1162,7 @@ Range.get;
 
 #### `Range.value`
 
-The [`static`][js-static] `value` property of the `MinMax` interface **sets** a new instance of [`Range`](#range) from the assigned value and **returns** an [`object`][js-object] of the `MinMax` interface consists of the [primitive][js-primitive] values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances, from an instance of [`Range`](#range) if set otherwise returns [`undefined`][js-undefined].
+The [`static`][js-static] `value` property of the [`MinMax`][package-type-minmax] interface **sets** a new instance of [`Range`](#range) from the assigned value and **returns** an [`object`][js-object] of the [`MinMax`][package-type-minmax] interface consists of the [primitive][js-primitive] values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances, from an instance of [`Range`](#range) if set otherwise returns [`undefined`][js-undefined].
 
 ```typescript
 public static get value(): MinMax<any, any> {
@@ -1192,7 +1192,7 @@ Range.value;
 
 #### `Range.prototype.get`
 
-Gets a `MinMax` interface [`object`][js-object] consisting of the [primitive][js-primitive] values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set otherwise returns an empty [`object`][js-object].
+Gets a [`MinMax`][package-type-minmax] interface [`object`][js-object] consisting of the [primitive][js-primitive] values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set otherwise returns an empty [`object`][js-object].
 
 ```typescript
 public get get(): MinMax<Min, Max> {
@@ -1374,7 +1374,7 @@ public static defineRange<Min extends number, Max extends number>(
 
 | Name: type                                    | Description |
 | :-------------------------------------------- | :---------- |
-| `minmax: MinMax<Min, Max>`                    | The [`object`][js-object] of the `MinMax` interface to create a new instance of [`Range`](#range). |
+| `minmax: MinMax<Min, Max>`                    | The [`object`][js-object] of the [`MinMax`][package-type-minmax] interface to create a new instance of [`Range`](#range). |
 | `callback?: ResultCallback<MinMax<Min, Max>>` | An optional callback [`function`][js-function] of the [`ResultCallback`][package-callback-resultcallback] type to handle the result of the check whether the provided `minmax` is an [`object`][js-object] that contains `min` or `max` property. |
 
 **Returns:**
@@ -1789,7 +1789,7 @@ Range.getMinimum<9>();
 
 #### `Range.setRange()`
 
-The [`static`][js-static] `setRange()` method **sets** a new instance of [`Range`](#range) with the provided `MinMax` parameter or stored [primitive][js-primitive] values from the [`Minimum`](#minimum) and a [`Maximum`](#maximum) instances of static [`Range`](#range).
+The [`static`][js-static] `setRange()` method **sets** a new instance of [`Range`](#range) with the provided [`MinMax`][package-type-minmax] parameter or stored [primitive][js-primitive] values from the [`Minimum`](#minimum) and a [`Maximum`](#maximum) instances of static [`Range`](#range).
 
 ```typescript
 public static setRange<Min extends number, Max extends number>(
@@ -1814,14 +1814,14 @@ public static setRange<Min extends number, Max extends number>(
 
 | Name  | Default value                       | Description |
 | :---- | :---------------------------------: | :---------- |
-| `Min` | Captured from the `min` of `minmax` | A generic type variable `Min` constrained by the [`number`][ts-number] type, by default of the value captured from the `min` property of supplied `minmax` parameter indicates the **type** of its `MinMax` interface. |
-| `Max` | Captured from the `max` of `minmax` | A generic type variable `Max` constrained by the [`number`][ts-number] type, by default of the value captured from the `max` property of supplied `minmax` parameter indicates the **type** of its `MinMax` interface. |
+| `Min` | Captured from the `min` of `minmax` | A generic type variable `Min` constrained by the [`number`][ts-number] type, by default of the value captured from the `min` property of supplied `minmax` parameter indicates the **type** of its [`MinMax`][package-type-minmax] interface. |
+| `Max` | Captured from the `max` of `minmax` | A generic type variable `Max` constrained by the [`number`][ts-number] type, by default of the value captured from the `max` property of supplied `minmax` parameter indicates the **type** of its [`MinMax`][package-type-minmax] interface. |
 
 **Parameters:**
 
 | Name: type                                    | Description |
 | :-------------------------------------------- | :---------- |
-| `minmax: MinMax<Min, Max>`                    | The [`object`][js-object] of the `MinMax` interface to create a new instance of [`Range`](#range), by default its value is picked from stored [`Minimum`](#minimum) and [`Maximum`](#maximum) of static [`Range`](#range). |
+| `minmax: MinMax<Min, Max>`                    | The [`object`][js-object] of the [`MinMax`][package-type-minmax] interface to create a new instance of [`Range`](#range), by default its value is picked from stored [`Minimum`](#minimum) and [`Maximum`](#maximum) of static [`Range`](#range). |
 | `callback?: ResultCallback<MinMax<Min, Max>>` | An optional callback [`function`][js-function] of the [`ResultCallback`][package-callback-resultcallback] type to handle the result of the check whether the provided `minmax` is an [`object`][js-object] that contains `min` or `max` property. |
 
 **Returns:**
@@ -2038,7 +2038,7 @@ new Range({ min: 9, max: 27}, (result, value, payload) => {
 
 #### `Range.prototype.valueOf()`
 
-The `valueOf()` method **returns** an [`object`][js-object] of the `MinMax` interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object].
+The `valueOf()` method **returns** an [`object`][js-object] of the [`MinMax`][package-type-minmax] interface consists of the primitive values of [`Minimum`](#minimum) and/or [`Maximum`](#maximum) instances if set or an empty [`object`][js-object].
 
 ```typescript
 public valueOf(): MinMax<Min, Max> {
