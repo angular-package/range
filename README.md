@@ -994,6 +994,7 @@ The [`Range`](#range) object represents a range between a [`number`][js-number] 
 | [`getMin()`](#rangegetmin)               | The [`static`][js-static] `getMin()` method **gets** the [primitive][js-primitive] value of the [`Minimum`](#minimum) instance from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`getMinimum()`](#rangegetminimum)       | The [`static`][js-static] `getMinimum()` method **gets** an instance of [`Minimum`](#minimum) from the [`Range`](#range) instance if set otherwise returns [`undefined`][js-undefined]. |
 | [`getRange()`](#rangegetrange)           | The [`static`][js-static] `getRange()` method **gets** an instance of [`Range`](#range) if set otherwise returns [`undefined`][js-undefined]. |
+| [`isRange()`](#rangeisrange)             | The [`static`][js-static] `isRange()` method **returns** the result of the check whether the provided `value` is an instance of [`Range`](#range). |
 | [`setMaximum()`](#rangesetmaximum)       | The [`static`][js-static] `setMaximum()` method **sets** the [`Maximum`](#maximum) instance with the provided `maximum`. |
 | [`setMinimum()`](#rangesetminimum)       | The [`static`][js-static] `setMinimum()` method **sets** the [`Minimum`](#minimum) instance with the provided `minimum`. |
 | [`setRange()`](#rangesetrange)           | The [`static`][js-static] `setRange()` method **sets** a new instance of [`Range`](#range) with the provided `MinMax` parameter or stored [primitive][js-primitive] values from the [`Minimum`](#minimum) and a [`Maximum`](#maximum) instances of static [`Range`](#range). |
@@ -1555,6 +1556,55 @@ Range.getRange();
 
 // Returns Range {max: 27, min: 9} of type Range<9, 27>.
 Range.getRange<9, 27>();
+```
+
+#### `Range.isRange()`
+
+The [`static`][js-static] `isRange()` method **returns** the result of the check whether the provided `value` is an instance of [`Range`](#range).
+
+```typescript
+public static isRange<Min extends number, Max extends number>(
+  value: any,
+  callback?: ResultCallback<any>
+): value is Range<Min, Max> {
+  return isInstance(value, Range, callback);
+}
+```
+
+**Generic type variables:**
+
+| Name  | Default value         | Description |
+| :---- | :-------------------: | :---------- |
+| `Max` | [`number`][ts-number] | A generic type variable `Max` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of the [`Range`](#range) instance via the return type `value is Range<Min, Max>`. |
+| `Min` | [`number`][ts-number] | A generic type variable `Min` constrained by the [`number`][ts-number] type indicates the **type** of the [primitive][js-primitive] value of the [`Range`](#range) instance via the return type `value is Range<Min, Max>`. |
+
+**Parameters:**
+
+| Name: type                       | Description |
+| :------------------------------- | :---------- |
+| `value: any`                     | The value of [`any`][ts-any] type to test against the [`Range`](#range) instance. |
+| `callback?: ResultCallback<any>` | An optional callback [`function`][js-function] of the [`ResultCallback`][package-callback-resultcallback] type to handle the result of the check whether the provided `value` is an instance of [`Range`](#range). |
+
+**Returns:**
+
+The **return value** is a [`boolean`][js-boolean] indicating whether the provided `value` is an instance of [`Range`](#range).
+
+**Usage:**
+
+```typescript
+// Example usage.
+import { Range } from '@angular-package/range';
+
+// Returns true.
+Maximum.isRange(new Maximum(27));
+
+const value: any = new Maximum(27);
+
+// Returns true.
+if (Maximum.isMaximum<27>(value)) {
+  // Returns Maximum {27} of type Maximum<27>
+  value;
+}
 ```
 
 <br>
