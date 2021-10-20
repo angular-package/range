@@ -55,7 +55,7 @@ testing.describe(`Range`, () => {
       expect(Range.isRange(Range.defineRange({ min, max }))).toEqual(true);
     })
     // Set methods.
-    .it(`.specMaximum()`, () => specMaximum(max, Range.setMinimum(max).getMaximum(), true))
+    .it(`.specMaximum()`, () => specMaximum(max, Range.setMaximum(max).getMaximum(), true))
     .it(`.specMinimum()`, () => specMinimum(min, Range.setMinimum(min).getMinimum(), true))
     .it(`.setRange()`, () => {
       specRange({ min: 10, max: 20 }, Range.setRange({ min: 10, max: 20 }).getRange(), true);
