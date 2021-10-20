@@ -2,6 +2,7 @@
 import { Testing, TestingToBeMatchers } from '@angular-package/testing';
 // Class.
 import { Maximum } from '../lib/maximum.class';
+import { specMaximum } from '../../test/spec-maximum.func';
 // Initialize.
 const testing = new Testing(true, true);
 const toBe = new TestingToBeMatchers();
@@ -9,34 +10,30 @@ const toBe = new TestingToBeMatchers();
 testing.describe(`Maximum`, () => {
   console.group(`Maximum`);
 
-  let min: number;
-  let max: number;
+  let min = Math.floor(Math.random() * 10);
+  let max = Math.floor(Math.random() * 100) + 11;
 
   beforeEach(() => {
-    min = 27;
-    max = 27;
+    min = Math.floor(Math.random() * 10);
+    max = Math.floor(Math.random() * 100) + 11;
   });
 
   testing
     .toBeClass(Maximum)
-    .toBeNumberType(new Maximum(3).get)
-    .toEqual('Must be equal to 3', new Maximum(3).get, 3);
+    .toBeNumberType(new Maximum(max).get)
+    .toEqual(`Must be equal to ${max}`, new Maximum(max).get, max)
 
-  testing.describe(`static`, () => {
+  .describe(`static`, () => {
     testing
     .it(`properties`, () => {
-      Maximum.set = 27;
-      toBe
-        .numberBetween(Maximum.get, { min, max })
-        .numberBetween(Maximum.value, { min, max });
-      Maximum.set = 127;
+      Maximum.set = max;
       toBe
         .instance(Maximum.getMaximum(), Maximum)
-        .numberBetween(Maximum.get, { min: 127, max: 127 })
-        .numberBetween(Maximum.value, { min: 127, max: 127 });
+        .numberBetween(Maximum.get, { min, max })
+        .numberBetween(Maximum.value, { min, max });
     })
     .it(`methods`, () => {
-      Maximum.setMaximum(min);
+      Maximum.setMaximum(max);
       toBe
         .instance(Maximum.getMaximum(), Maximum)
         .numberBetween(Maximum.getMaximum().get, { min, max })
@@ -44,17 +41,12 @@ testing.describe(`Maximum`, () => {
     });
   })
 
-  .it(`initialize with value 3`, () => {
-    const minimum = new Maximum(3);
-    toBe
-      .number(minimum.get)
-      .number(minimum.valueOf());
-  })
-  .it(`initialize with string`, () => {
-    const minimum = new Maximum(null as any);
-    toBe
-      .not.number(minimum.get)
-      .not.number(minimum.valueOf());
+  .it(`instance`, () => {
+    specMaximum(max, undefined, true);
+    specMaximum('0' as any, undefined, true);
+    specMaximum(null as any, undefined, true);
+    specMaximum(undefined as any, undefined, true);
   });
+
   console.groupEnd();
 });

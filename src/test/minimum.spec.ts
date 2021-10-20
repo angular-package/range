@@ -2,6 +2,7 @@
 import { Testing, TestingToBeMatchers } from '@angular-package/testing';
 // Class.
 import { Minimum } from '../lib/minimum.class';
+import { specMinimum } from '../../test/spec-minimum.func';
 // Initialize.
 const testing = new Testing(true, true);
 const toBe = new TestingToBeMatchers();
@@ -9,31 +10,27 @@ const toBe = new TestingToBeMatchers();
 testing.describe(`Minimum`, () => {
   console.group(`Minimum`);
 
-  let min: number;
-  let max: number;
+  let min = Math.floor(Math.random() * 100);
+  let max = Math.floor(Math.random() * 1000) + 100;
 
   beforeEach(() => {
-    min = 27;
-    max = 27;
+    min = Math.floor(Math.random() * 100);
+    max = Math.floor(Math.random() * 1000) + 100;
   });
 
   testing
     .toBeClass(Minimum)
-    .toBeNumberType(new Minimum(3).get)
-    .toEqual('Must be equal to 3', new Minimum(3).get, 3);
+    .toBeNumberType(new Minimum(min).get)
+    .toEqual(`Must be equal to ${min}`, new Minimum(min).get, min)
 
-  testing.describe(`static`, () => {
+  .describe(`static`, () => {
     testing
     .it(`properties`, () => {
-      Minimum.set = 27;
-      toBe
-        .numberBetween(Minimum.get, { min, max })
-        .numberBetween(Minimum.value, { min, max });
-      Minimum.set = 127;
+      Minimum.set = min;
       toBe
         .instance(Minimum.getMinimum(), Minimum)
-        .numberBetween(Minimum.get, { min: 127, max: 127 })
-        .numberBetween(Minimum.value, { min: 127, max: 127 });
+        .numberBetween(Minimum.get, { min, max })
+        .numberBetween(Minimum.value, { min, max });
     })
     .it(`methods`, () => {
       Minimum.setMinimum(min);
@@ -44,17 +41,12 @@ testing.describe(`Minimum`, () => {
     });
   })
 
-  .it(`initialize with value 3`, () => {
-    const minimum = new Minimum(3);
-    toBe
-      .number(minimum.get)
-      .number(minimum.valueOf());
-  })
-  .it(`initialize with string`, () => {
-    const minimum = new Minimum(null as any);
-    toBe
-      .not.number(minimum.get)
-      .not.number(minimum.valueOf());
+  .it(`instance`, () => {
+    specMinimum(min, undefined, true);
+    specMinimum('0' as any, undefined, true);
+    specMinimum(null as any, undefined, true);
+    specMinimum(undefined as any, undefined, true);
   });
+
   console.groupEnd();
 });
