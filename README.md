@@ -1866,10 +1866,8 @@ constructor(
   callback?: ResultCallback<MinMax<Min, Max>>
 ) {
   guardObjectSomeKeys(range, ['max', 'min'], callback) &&
-    (isDefined(range.max) &&
-      (this.#maximum = new Maximum<Max>(range?.max as Max)),
-    isDefined(range.min) &&
-      (this.#minimum = new Minimum<Min>(range?.min as Min)));
+    (isDefined(range.max) && (this.#maximum = Range.defineMaximum(range.max)),
+    isDefined(range.min) && (this.#minimum = Range.defineMinimum(range.min)));
 }
 ```
 
