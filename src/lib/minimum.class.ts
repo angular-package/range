@@ -41,17 +41,25 @@ export class Minimum<Min extends number> extends Number {
    * The property, with the help of `toStringTag`, changes the default tag to `'minimum'` for static `Minimum`.
    */
   static get [Symbol.toStringTag](): string {
-    return 'minimum';
+    return this.#toStringTag;
   }
   //#endregion static public properties.
 
+  //#region static private properties.
   /**
    * The static private property stores an instance of `Minimum`.
    */
   static #minimum: Minimum<any>;
+
+  /**
+   * The name for the `toStringTag` of `Symbol`.
+   */
+  static #toStringTag = 'minimum';
+  //#endregion static private properties.
   //#endregion static properties.
 
   //#region instance properties.
+  //#region instance public properties.
   /**
    * The property `get` returns the primitive value of the generic type variable `Min` of the `Minimum` instance.
    */
@@ -64,11 +72,13 @@ export class Minimum<Min extends number> extends Number {
    * the `typeOf()` function of `@angular-package/type`.
    */
   public get [Symbol.toStringTag](): string {
-    return 'minimum';
+    return Minimum.#toStringTag;
   }
+  //#endregion instance public properties.
   //#endregion instance properties.
 
   //#region static methods.
+  //#region static public methods.
   /**
    * The static `getMinimum()` method returns an instance of `Minimum` if set otherwise returns undefined.
    * @returns The return value is an instance of `Minimum` if set otherwise undefined.
@@ -107,6 +117,7 @@ export class Minimum<Min extends number> extends Number {
     guardNumber(minimum, callback) && (this.#minimum = new Minimum(minimum));
     return this;
   }
+  //#endregion static public methods.
   //#endregion static methods.
 
   //#region constructor.
@@ -127,6 +138,7 @@ export class Minimum<Min extends number> extends Number {
   }
   //#endregion constructor.
 
+  //#region instance methods.
   //#region instance public methods.
   /**
    * The `valueOf()` method returns the primitive value of the generic type variable `Min` of the specified `Minimum` object.
@@ -137,4 +149,5 @@ export class Minimum<Min extends number> extends Number {
     return super.valueOf() as Min;
   }
   //#endregion instance public methods.
+  //#endregion instance methods.
 }
