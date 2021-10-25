@@ -42,17 +42,25 @@ export class Maximum<Max extends number> extends Number {
    * `typeOf()` function of `@angular-package/type`.
    */
   static get [Symbol.toStringTag](): string {
-    return 'maximum';
+    return this.#toStringTag;
   }
   //#endregion static public properties.
 
+  //#region static private properties
   /**
    * The static, private (independent) property stores an instance of `Maximum`.
    */
   static #maximum: Maximum<any>;
+
+  /**
+   * The name for the `toStringTag` of `Symbol`.
+   */
+  static #toStringTag = 'maximum';
+  //#endregion static private properties.
   //#endregion static properties.
 
   //#region instance properties.
+  //#region instance public properties.
   /**
    * The property `get` returns the primitive value of the generic type variable `Max` of the `Maximum` instance.
    */
@@ -65,11 +73,13 @@ export class Maximum<Max extends number> extends Number {
    * the `typeOf()` function of `@angular-package/type`.
    */
   public get [Symbol.toStringTag](): string {
-    return 'maximum';
+    return Maximum.#toStringTag;
   }
+  //#endregion instance public properties.
   //#endregion instance properties.
 
   //#region static methods.
+  //#region static public methods.
   /**
    * The static `getMaximum()` method returns an instance of `Maximum` if set otherwise returns `undefined`.
    * @returns The return value is an instance of `Maximum` if set otherwise returns `undefined`.
@@ -108,6 +118,7 @@ export class Maximum<Max extends number> extends Number {
     guardNumber(maximum, callback) && (this.#maximum = new Maximum(maximum));
     return this;
   }
+  //#endregion static public methods.
   //#endregion static methods.
 
   //#region constructor.
@@ -128,6 +139,7 @@ export class Maximum<Max extends number> extends Number {
   }
   //#endregion constructor.
 
+  //#region instance methods.
   //#region instance public methods.
   /**
    * The `valueOf()` method returns the primitive value of the generic type variable `Max` of the specified `Maximum` object.
@@ -138,4 +150,5 @@ export class Maximum<Max extends number> extends Number {
     return super.valueOf() as Max;
   }
   //#endregion instance public methods.
+  //#endregion instance methods.
 }
