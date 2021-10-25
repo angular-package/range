@@ -63,7 +63,7 @@ export class Range<Min extends number, Max extends number> {
    * The static property, with the help of `toStringTag`, changes the default tag to `'range'` for static `Range`.
    */
   public static get [Symbol.toStringTag](): string {
-    return 'range';
+    return this.#toStringTag;
   }
 
   //#region private static properties.
@@ -71,6 +71,11 @@ export class Range<Min extends number, Max extends number> {
    * The static, private (independent) property returns an instance of `Range` if set otherwise returns undefined.
    */
   static #range: Range<any, any>;
+
+  /**
+   * The name for the `toStringTag` of `Symbol`.
+   */
+  static #toStringTag = 'range';
   //#endregion static private properties.
   //#endregion static properties.
 
@@ -104,7 +109,7 @@ export class Range<Min extends number, Max extends number> {
    * `typeOf()` function of `@angular-package/type`.
    */
   get [Symbol.toStringTag](): string {
-    return 'range';
+    return Range.#toStringTag;
   }
 
   /**
@@ -113,20 +118,20 @@ export class Range<Min extends number, Max extends number> {
    */
   get #minmax(): MinMax<any, any> {
     return {
-      ...(this.#maximum?.get && { max: this.#maximum.get }),
-      ...(this.#minimum?.get && { min: this.#minimum.get }),
+      ...(isDefined(this.#maximum?.get) && { max: this.#maximum?.get }),
+      ...(isDefined(this.#minimum?.get) && { min: this.#minimum?.get }),
     };
   }
 
   /**
-   * The private (independent) property returns an instance of `Maximum`.
+   * The private (independent) property indicates the instance of `Maximum`.
    */
-  #maximum!: Maximum<Max>;
+  #maximum: Maximum<Max> | undefined;
 
   /**
-   * The private (independent) property returns an instance of `Minimum`.
+   * The private (independent) property indicates the instance of `Minimum`.
    */
-  #minimum!: Minimum<Min>;
+  #minimum: Minimum<Min> | undefined;
   //#endregion instance properties.
 
   //#region static public methods.
@@ -313,13 +318,12 @@ export class Range<Min extends number, Max extends number> {
     callback?: ResultCallback<MinMax<Min, Max>>
   ) {
     guardObjectSomeKeys(range, ['max', 'min'], callback) &&
-      (isDefined(range.max) &&
-        (this.#maximum = new Maximum<Max>(range?.max as Max)),
-      isDefined(range.min) &&
-        (this.#minimum = new Minimum<Min>(range?.min as Min)));
+      (isDefined(range.max) && (this.#maximum = Range.defineMaximum(range.max)),
+      isDefined(range.min) && (this.#minimum = Range.defineMinimum(range.min)));
   }
   //#endregion constructor.
 
+  //#region instance methods.
   //#region instance public methods.
   /**
    * Gets the primitive value of the `Maximum` instance from the `Range` instance if set otherwise returns `undefined`.
@@ -368,4 +372,5 @@ export class Range<Min extends number, Max extends number> {
     return this.#minmax;
   }
   //#endregion instance public methods.
+  //#endregion instance methods.
 }
