@@ -13,7 +13,36 @@ export class Greater<Value extends number> extends Number {
   }
 
   /**
-   * Creates the `Greater` instance with the given `value`.
+   * Defines the `Greater` instance with the given primitive `value`.
+   * @param value The value of generic type variable `Value` to set with a new instance.
+   * @returns The return value is an instance of `Greater` of the given primitive `value`.
+   * @angularpackage
+   */
+  public static define<Value extends number>(value: Value): Greater<Value> {
+    return new this(value);
+  }
+
+  /**
+   * Checks whether the given `value` is the `Greater` instance of any or the given primitive value.
+   * @param value The value of any type to test against the `Greater` instance.
+   * @param greaterValue An optional value of generic type variable `Value` to check whether the given `value` contains.
+   * @returns The return value is a `boolean` indicating whether the given `value` is an instance of `Greater` of any or the given
+   * primitive value.
+   * @angularpackage
+   */
+  public static isGreater<Value extends number>(
+    value: any,
+    greaterValue?: Value
+  ): value is Greater<Value> {
+    return (
+      typeof value === 'object' &&
+      value instanceof this &&
+      (typeof greaterValue === 'number' ? value.valueOf() : true)
+    );
+  }
+
+  /**
+   * Creates the `Greater` instance with the given primitive `value`.
    * @param value The value of generic type variable `Value` to set with a new instance.
    * @angularpackage
    */
