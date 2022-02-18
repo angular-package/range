@@ -15,7 +15,7 @@ export class Greater<Value extends number> extends Number {
   /**
    * Defines the `Greater` instance with the given primitive `value`.
    * @param value The value of generic type variable `Value` to set with a new instance.
-   * @returns The return value is an instance of `Greater` of the given primitive `value`.
+   * @returns The return value is the `Greater` instance of the given primitive `value`.
    * @angularpackage
    */
   public static define<Value extends number>(value: Value): Greater<Value> {
@@ -37,7 +37,9 @@ export class Greater<Value extends number> extends Number {
     return (
       typeof value === 'object' &&
       value instanceof this &&
-      (typeof greaterValue === 'number' ? value.valueOf() : true)
+      (typeof greaterValue === 'number'
+        ? value.valueOf() === greaterValue
+        : true)
     );
   }
 
