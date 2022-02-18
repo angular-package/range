@@ -15,7 +15,7 @@ export class Less<Value extends number> extends Number {
   /**
    * Defines the `Less` instance with the given primitive `value`.
    * @param value The value of generic type variable `Value` to set with a new instance.
-   * @returns The return value is an instance of `Less` of the given primitive `value`.
+   * @returns The return value the `Less` instance of the given primitive `value`.
    * @angularpackage
    */
   public static define<Value extends number>(value: Value): Less<Value> {
@@ -23,10 +23,10 @@ export class Less<Value extends number> extends Number {
   }
 
   /**
-   * Checks whether the given `value` is the `Less` instance of any or the given primitive value.
+   * Checks whether the given `value` is the `Less` instance of any or given primitive value.
    * @param value The value of any type to test against the `Less` instance.
    * @param lessValue An optional value of generic type variable `Value` to check whether the given `value` contains.
-   * @returns The return value is a `boolean` indicating whether the given `value` is an instance of `Less` of any or the given
+   * @returns The return value is a `boolean` indicating whether the given `value` is the `Less` instance of any or given
    * primitive value.
    * @angularpackage
    */
@@ -37,7 +37,7 @@ export class Less<Value extends number> extends Number {
     return (
       typeof value === 'object' &&
       value instanceof this &&
-      (typeof lessValue === 'number' ? value.valueOf() : true)
+      (typeof lessValue === 'number' ? value.valueOf() === lessValue : true)
     );
   }
 
