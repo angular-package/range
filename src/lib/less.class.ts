@@ -1,5 +1,5 @@
 /**
- * The `Less` number object represents the primitive value greater than the given.
+ * The `Less` primitive wrapper `object` represents the primitive value of `number` type less than the given.
  */
 export class Less<Value extends number> extends Number {
   /**
@@ -22,7 +22,7 @@ export class Less<Value extends number> extends Number {
   }
 
   /**
-   * Checks whether the primitive value of a specified object is less than the given `value`.
+   * Checks whether the primitive value of a specified `object` is less than the given `value`.
    * @param value The value of number type to test.
    * @returns The return value is a `boolean` indicating whether the primitive value is less than the given value.
    * @angularpackage
@@ -32,9 +32,9 @@ export class Less<Value extends number> extends Number {
   }
 
   /**
-   * Checks whether the primitive value of a specified object is less than every given value.
+   * Checks whether the primitive value of a specified `object` is less than every given value.
    * @param values A rest parameter of the numbers to test.
-   * @returns The return value is a `boolean` indicating whether the primitive value is less than every given value.
+   * @returns The return value is a `boolean` indicating whether the primitive value is less than every value of the given `values`.
    * @angularpackage
    */
   public thanEvery(...values: number[]): boolean {
@@ -44,7 +44,7 @@ export class Less<Value extends number> extends Number {
   }
 
   /**
-   * Checks whether the primitive value of a specified object is less than some given `values`.
+   * Checks whether the primitive value of a specified `object` is less than some given `values`.
    * @param values A rest parameter of the numbers to test.
    * @returns The return value is a `boolean` indicating whether the primitive value is less than some given `values`.
    * @angularpackage
@@ -56,7 +56,7 @@ export class Less<Value extends number> extends Number {
   }
 
   /**
-   * Returns the primitive value of a specified object.
+   * Returns the primitive value of a specified `object`.
    * @returns The return value is the primitive value of generic type variable `Value`.
    * @angularpackage
    */
