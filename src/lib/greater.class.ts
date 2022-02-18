@@ -1,5 +1,5 @@
 /**
- * The `Greater` primitive wrapper `object` represents the primitive value of `number` type greater than the given.
+ * The `Greater` primitive wrapper `object` represents the primitive value of the `number` type greater than the given.
  */
 export class Greater<Value extends number> extends Number {
   /**
@@ -23,11 +23,11 @@ export class Greater<Value extends number> extends Number {
   }
 
   /**
-   * Checks whether the given `value` is the `Greater` instance of any or the given primitive value.
+   * Checks whether the given `value` is the `Greater` instance of any or given primitive value.
    * @param value The value of any type to test against the `Greater` instance.
    * @param greaterValue An optional value of generic type variable `Value` to check whether the given `value` contains.
-   * @returns The return value is a `boolean` indicating whether the given `value` is an instance of `Greater` of any or the given
-   * primitive value.
+   * @returns The return value is a `boolean` indicating whether the given `value` is the `Greater` instance of any or given primitive
+   * value.
    * @angularpackage
    */
   public static isGreater<Value extends number>(
@@ -53,7 +53,7 @@ export class Greater<Value extends number> extends Number {
   }
 
   /**
-   * Checks whether the primitive value of a specified ``object`` is greater than the given `value`.
+   * Checks whether the primitive value of a specified `object` is greater than the given `value`.
    * @param value The value of `number` type to test.
    * @returns The return value is a `boolean` indicating whether the primitive value is greater than the given value.
    * @angularpackage
