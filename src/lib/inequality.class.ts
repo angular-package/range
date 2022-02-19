@@ -7,8 +7,9 @@ import { Less } from './less.class';
 export abstract class Inequality<Value extends number> extends Number {
   //#region instance public properties.
   /**
-   * The `get` accessor obtains the `Greater` instance of given `value` by returning the `#greater` property.
-   * @returns The return value is the `Greater` instance of the given `value` in the constructor.
+   * The `get` accessor obtains from the private `#greater` property an instance of the `Greater` with a primitive value from a given
+   * `value` of the `Inequality` constructor.
+   * @returns The return value is the `Greater` instance with a primitive value from the given `value` of the `Inequality` constructor.
    * @angularpackage
    */
   public get greater(): Greater<Value> {
@@ -16,8 +17,9 @@ export abstract class Inequality<Value extends number> extends Number {
   }
 
   /**
-   * The `get` accessor obtains the `Less` instance of given `value` by returning the `#less` property.
-   * @returns The return value is the `Less` instance of the given `value` in the constructor.
+   * The `get` accessor obtains from the private `#less` property an instance of the `Less` with a primitive value from a given `value` of
+   * the `Inequality` constructor.
+   * @returns The return value is the `Less` instance with a primitive value from the given `value` of the `Inequality` constructor.
    * @angularpackage
    */
   public get less(): Less<Value> {
@@ -40,7 +42,7 @@ export abstract class Inequality<Value extends number> extends Number {
   //#region constructor.
   /**
    * Creates a child class instance with the given primitive `value`.
-   * @param value The value of the generic type variable `Value` is the primitive value of a new child instance.
+   * @param value The value of the generic type variable `Value` is the primitive value of a new child class instance.
    * @angularpackage
    */
   constructor(value: Value) {
@@ -52,9 +54,10 @@ export abstract class Inequality<Value extends number> extends Number {
 
   //#region instance public methods.
   /**
-   * Checks whether the primitive value of a child instance is greater than the given `value`.
+   * Checks whether the primitive value of a child class instance is greater than the given `value`.
    * @param value The value of `number` type to test.
-   * @returns The return value is a `boolean` indicating whether the primitive value is greater than the given `value`.
+   * @returns The return value is a `boolean` indicating whether the primitive value of a child class instance is greater than the given
+   * `value`.
    * @angularpackage
    */
   public greaterThan(value: number): boolean {
@@ -62,9 +65,10 @@ export abstract class Inequality<Value extends number> extends Number {
   }
 
   /**
-   * Checks whether the primitive value of a child instance is greater than every value of the given `values`.
-   * @param value A rest parameter of the numbers to test.
-   * @returns The return value is a `boolean` indicating whether the primitive value is greater than every value of the given `values`.
+   * Checks whether the primitive value of a child class instance is greater than every value of the given `values`.
+   * @param values A rest parameter of the numbers to test.
+   * @returns The return value is a `boolean` indicating whether the primitive value of a child class instance is greater than every value
+   * of the given `values`.
    * @angularpackage
    */
   public greaterThanEvery(...values: number[]): boolean {
@@ -72,19 +76,21 @@ export abstract class Inequality<Value extends number> extends Number {
   }
 
   /**
-   * Checks whether the primitive value of a child instance is greater than some given `values`.
-   * @param value A rest parameter of the numbers to test.
-   * @returns The return value is a `boolean` indicating whether the primitive value is greater than some given `values`.
+   * Checks whether the primitive value of a child class instance is greater than some given `values`.
+   * @param values A rest parameter of the numbers to test.
+   * @returns The return value is a `boolean` indicating whether the primitive value of a child class instance is greater than some given
+   * `values`.
    * @angularpackage
    */
-  public greaterThanSome(...value: number[]): boolean {
-    return this.#greater.thanSome(...value);
+  public greaterThanSome(...values: number[]): boolean {
+    return this.#greater.thanSome(...values);
   }
 
   /**
-   * Checks whether the primitive value of a child instance is less than the given `value`.
+   * Checks whether the primitive value of a child class instance is less than the given `value`.
    * @param value The value of `number` type to test.
-   * @returns The return value is a `boolean` indicating whether the primitive value is less than the given `value`.
+   * @returns The return value is a `boolean` indicating whether the primitive value of a child class instance is **less** than the given
+   * `value`.
    * @angularpackage
    */
   public lessThan(value: number): boolean {
@@ -92,9 +98,10 @@ export abstract class Inequality<Value extends number> extends Number {
   }
 
   /**
-   * Checks whether the primitive value of a child instance is less than every given value.
+   * Checks whether the primitive value of a child class instance is less than every given value.
    * @param values A rest parameter of the numbers to test.
-   * @returns The return value is a `boolean` indicating whether the primitive value is less than every value of the given `values`.
+   * @returns The return value is a `boolean` indicating whether the primitive value of a child class instance is less than every value of
+   * the given `values`.
    * @angularpackage
    */
   public lessThanEvery(...values: number[]): boolean {
@@ -102,9 +109,10 @@ export abstract class Inequality<Value extends number> extends Number {
   }
 
   /**
-   * Checks whether the primitive value of a child instance is less than some given `values`.
+   * Checks whether the primitive value of a child class instance is less than some given `values`.
    * @param values A rest parameter of the numbers to test.
-   * @returns The return value is a `boolean` indicating whether the primitive value is less than some given `values`.
+   * @returns The return value is a `boolean` indicating whether the primitive value of a child class instance is less than some given
+   * `values`.
    * @angularpackage
    */
   public lessThanSome(...values: number[]): boolean {
