@@ -1,153 +1,67 @@
-import {
-  // Type.
-  ResultCallback,
-  // Function.
-  guardNumber,
-  isInstance,
-} from '@angular-package/type';
+// Class.
+import { Inequality } from './inequality.class';
 /**
- * The `Minimum` primitive wrapper object represents the minimum `number`.
+ * The `Maximum` primitive wrapper object extended by the `Inequality` abstract primitive wrapper `object` represents the minimum number
+ * greater or less than the given.
  */
-export class Minimum<Min extends number> extends Number {
-  //#region static properties.
-  //#region static public properties.
-  /**
-   * The static `get` property of `number` type returns the primitive value of the `Minimum` instance if set otherwise returns `undefined`.
-   */
-  public static get get(): number {
-    return this.#minimum?.valueOf();
-  }
-
-  /**
-   * The static `set` property of the `number` type sets a new instance of `Minimum` with its provided value. The set value can be got by
-   * the static `get` and `value` properties, or the static `getMinimum()` method.
-   */
-  public static set set(minimum: number) {
-    this.value = minimum;
-  }
-
-  /**
-   * The static `value` property of the `number` type sets a new instance of `Minimum` with its provided value and returns the primitive
-   * value of `Minimum` instance if set, otherwise returns `undefined`.
-   */
-  public static get value(): number {
-    return this.#minimum?.valueOf();
-  }
-  public static set value(minimum: number) {
-    guardNumber(minimum) && (this.#minimum = new Minimum(minimum));
-  }
-
-  /**
-   * The property, with the help of `toStringTag`, changes the default tag to `'minimum'` for static `Minimum`.
-   */
-  static get [Symbol.toStringTag](): string {
-    return this.#toStringTag;
-  }
-  //#endregion static public properties.
-
-  //#region static private properties.
-  /**
-   * The static private property stores an instance of `Minimum`.
-   */
-  static #minimum: Minimum<any>;
-
-  /**
-   * The name for the `toStringTag` of `Symbol`.
-   */
-  static #toStringTag = 'minimum';
-  //#endregion static private properties.
-  //#endregion static properties.
-
-  //#region instance properties.
+export class Minimum<Value extends number> extends Inequality<Value> {
   //#region instance public properties.
   /**
-   * The property `get` returns the primitive value of the generic type variable `Min` of the `Minimum` instance.
-   */
-  public get get(): Min {
-    return super.valueOf() as Min;
-  }
-
-  /**
-   * The property, with the help of `toStringTag`, changes the default tag to `'minimum'` for an instance of `Minimum`. It can be read by
+   * The property, with the help of `toStringTag`, changes the default tag to `'Minimum'` for an instance of `Minimum`. It can be read by
    * the `typeOf()` function of `@angular-package/type`.
    */
   public get [Symbol.toStringTag](): string {
-    return Minimum.#toStringTag;
+    return 'Minimum';
   }
   //#endregion instance public properties.
-  //#endregion instance properties.
 
-  //#region static methods.
   //#region static public methods.
   /**
-   * The static `getMinimum()` method returns an instance of `Minimum` if set otherwise returns undefined.
-   * @returns The return value is an instance of `Minimum` if set otherwise undefined.
-   * @angularpackage
+   * The static `create()` method creates the `Minimum` instance with the given primitive `value`.
+   * @param value The minimum number of generic type variable `Value` to set with a new instance.
+   * @returns The return value is the `Minimum` instance with the primitive value of the given `value`.
    */
-  public static getMinimum<Min extends number>(): Minimum<Min> {
-    return this.#minimum;
+  public static create<Value extends number>(value: Value): Minimum<Value> {
+    return new this(value);
   }
 
   /**
-   * The static `isMinimum()` method checks the provided `value` of any type whether is an instance of `Minimum`.
+   * The static `isMinimum()` method checks the provided `value` of any type whether is an instance of `Minimum` of any or the given `min`.
    * @param value The value of any type to test against the `Minimum` instance.
-   * @param callback An optional callback function of the `ResultCallback` type to handle the result of the check whether the provided
-   * `value` is an instance of `Minimum`.
-   * @returns The return value is a `boolean` indicating whether the provided `value` is an instance of `Minimum`.
+   * @param max Optional minimum of the generic type variable `Value` to check if it's the primitive value of the given `value`.
+   * @returns The return value is a `boolean` indicating whether the provided `value` is an instance of `Minimum` of any or the given `min`.
    */
-  public static isMinimum<Min extends number>(
+  public static isMinimum<Value extends number>(
     value: any,
-    callback?: ResultCallback<any>
-  ): value is Minimum<Min> {
-    return isInstance(value, Minimum, callback);
-  }
-
-  /**
-   * The static `setMinimum()` method sets a new instance of `Minimum` with the provided `minimum`.
-   * @param minimum The minimum value of the generic type variable `Min` to set a new instance of `Minimum`.
-   * @param callback An optional callback `function` of the `ResultCallback` type to handle the result of the check whether the provided
-   * `minimum` is a `number` type.
-   * @returns The return value is static `Minimum`.
-   * @angularpackage
-   */
-  public static setMinimum<Min extends number>(
-    minimum: Min,
-    callback?: ResultCallback<Min>
-  ): typeof Minimum {
-    guardNumber(minimum, callback) && (this.#minimum = new Minimum(minimum));
-    return this;
+    min?: Value
+  ): value is Minimum<Value> {
+    return (
+      typeof value === 'object' &&
+      value instanceof this &&
+      (typeof min === 'number' ? value.valueOf() : true)
+    );
   }
   //#endregion static public methods.
-  //#endregion static methods.
 
   //#region constructor.
   /**
-   * Creates a new instance of `Minimum`.
-   * @param minimum The immutable minimum value of generic type variable `Min` of the `Minimum` instance being created. Its default
-   * value can be set by the static `set` and `value` properties, or static `setMinimum()` method and can be picked by property `get` or
-   * `valueOf()` method of an `Minimum` instance.
-   * @param callback An optional callback function of the `ResultCallback` type to handle the result of the check whether the provided
-   * `minimum` is a `number` type.
+   * Creates the `Minimum` instance of the given primitive `value`.
+   * @param value The value of the generic type variable `Value` is the primitive value of the new instance.
    * @angularpackage
    */
-  constructor(
-    minimum: Min = Minimum.#minimum?.get,
-    callback?: ResultCallback<Min>
-  ) {
-    super((guardNumber(minimum, callback) && minimum) || 0);
+  constructor(value: Value) {
+    super(value);
   }
   //#endregion constructor.
 
-  //#region instance methods.
   //#region instance public methods.
   /**
-   * The `valueOf()` method returns the primitive value of the generic type variable `Min` of the specified `Minimum` object.
-   * @returns The return value is the `number` of the generic type variable `Min`.
+   * The `valueOf()` method returns the primitive value of generic type variable `Value` of the specified `Minimum` object.
+   * @returns The return value is the primitive value of generic type variable `Value`.
    * @angularpackage
    */
-  public valueOf(): Min {
-    return super.valueOf() as Min;
+  public valueOf(): Value {
+    return super.valueOf() as Value;
   }
   //#endregion instance public methods.
-  //#endregion instance methods.
 }
