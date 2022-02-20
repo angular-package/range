@@ -2,6 +2,7 @@
  * The `Less` primitive wrapper `object` represents the primitive value of `number` type less than the given.
  */
 export class Less<Value extends number> extends Number {
+  //#region instance public accessors.
   /**
    * The `get` accessor, with the help of `toStringTag`, changes the default tag to `Less` for an instance of `Less`. It can be read
    * by the `typeOf()` function of `@angular-package/type`.
@@ -11,23 +12,25 @@ export class Less<Value extends number> extends Number {
   public get [Symbol.toStringTag](): string {
     return 'Less';
   }
+  //#endregion instance public accessors.
 
+  //#region public static methods.
   /**
-   * Defines the `Less` instance with the given primitive `value`.
-   * @param value The value of generic type variable `Value` to set with a new instance.
-   * @returns The return value the `Less` instance of the given primitive `value`.
+   * Creates the `Less` instance with the given primitive `value`.
+   * @param value The value of generic type variable `Value` to set with a newly created instance.
+   * @returns The return value is the `Less` instance with the primitive value of the given `value`.
    * @angularpackage
    */
-  public static define<Value extends number>(value: Value): Less<Value> {
+  public static create<Value extends number>(value: Value): Less<Value> {
     return new this(value);
   }
 
   /**
    * Checks whether the given `value` is the `Less` instance of any or given primitive value.
    * @param value The value of any type to test against the `Less` instance.
-   * @param lessValue An optional value of generic type variable `Value` to check whether the given `value` contains.
-   * @returns The return value is a `boolean` indicating whether the given `value` is the `Less` instance of any or given
-   * primitive value.
+   * @param lessValue An optional value of generic type variable `Value` to check whether it's the primitive value of the given `value`.
+   * @returns The return value is a `boolean` indicating whether the given `value` is the `Less` instance of any or given primitive
+   * value.
    * @angularpackage
    */
   public static isLess<Value extends number>(
@@ -40,7 +43,9 @@ export class Less<Value extends number> extends Number {
       (typeof lessValue === 'number' ? value.valueOf() === lessValue : true)
     );
   }
+  //#endregion public static methods.
 
+  //#region constructor.
   /**
    * Creates the `Less` instance with the given `value`.
    * @param value The value of generic type variable `Value` to set with a new instance.
@@ -49,7 +54,9 @@ export class Less<Value extends number> extends Number {
   constructor(value: Value) {
     super(value);
   }
+  //#endregion constructor.
 
+  //#region instance public methods.
   /**
    * Checks whether the primitive value of a specified `object` is less than the given `value`.
    * @param value The value of number type to test.
@@ -92,4 +99,5 @@ export class Less<Value extends number> extends Number {
   public valueOf(): Value {
     return super.valueOf() as any;
   }
+  //#endregion instance public methods.
 }
