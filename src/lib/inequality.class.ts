@@ -5,7 +5,7 @@ import { Less } from './less.class';
  * The `Inequality` abstract primitive wrapper `object` represents the primitive value greater or less than the given.
  */
 export abstract class Inequality<Value extends number> extends Number {
-  //#region instance public properties.
+  //#region instance public accessors.
   /**
    * The `get` accessor obtains from the private `#greater` property an instance of the `Greater` with a primitive value from a given
    * `value` of the `Inequality` constructor.
@@ -25,7 +25,7 @@ export abstract class Inequality<Value extends number> extends Number {
   public get less(): Less<Value> {
     return this.#less;
   }
-  //#endregion instance public properties.
+  //#endregion instance public accessors.
 
   //#region instance private properties.
   /**
