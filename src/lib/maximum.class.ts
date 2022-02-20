@@ -17,29 +17,30 @@ export class Maximum<Value extends number> extends Inequality<Value> {
 
   //#region static public methods.
   /**
-   * Defines the `Maximum` instance of the given primitive `value`.
-   * @param value The maximum number of generic type variable `Max` to set with a new instance.
-   * @returns The return value is the `Maximum` instance of the given `max`.
+   * Creates the `Maximum` instance with the given primitive `value`.
+   * @param value The maximum number of generic type variable `Value` to set with a new instance.
+   * @returns The return value is the `Maximum` instance of the given primitive `value`.
    * @angularpackage
    */
-  public static define<Value extends number>(value: Value): Maximum<Value> {
+  public static create<Value extends number>(value: Value): Maximum<Value> {
     return new this(value);
   }
 
   /**
-   * The static `isMaximum()` method checks the provided value of any type whether is an instance of `Maximum`.
+   * Checks whether the value of any type is the `Maximum` instance of any or the given primitive value.
    * @param value The value of any type to test against the `Maximum` instance.
+   * @param max Optional maximum of the generic type variable `Value` to check if it's the primitive value of the given `value`.
    * @returns The return value is a `boolean` indicating whether the provided value is an instance of `Maximum`.
    * @angularpackage
    */
-  public static isMaximum<Max extends number>(
+  public static isMaximum<Value extends number>(
     value: any,
-    max?: Max
-  ): value is Maximum<Max> {
+    max?: Value
+  ): value is Maximum<Value> {
     return (
       typeof value === 'object' &&
       value instanceof this &&
-      (typeof max === 'number' ? value.valueOf() : true)
+      (typeof max === 'number' ? value.valueOf() === max : true)
     );
   }
   //#endregion static methods.
@@ -58,7 +59,7 @@ export class Maximum<Value extends number> extends Inequality<Value> {
   //#region instance public methods.
   /**
    * The `valueOf()` method returns the primitive value of the generic type variable `Value` of the specified `Maximum` object.
-   * @returns The return value is the `number` of the generic type variable `Value`.
+   * @returns The return value is the primitive value of the generic type variable `Value`.
    * @angularpackage
    */
   public valueOf(): Value {
