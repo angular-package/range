@@ -1,376 +1,275 @@
-import {
-  // Type.
-  MinMax,
-  ResultCallback,
-  // Function.
-  guardObjectSomeKeys,
-  isDefined,
-  isInstance,
-} from '@angular-package/type';
 // Class.
 import { Maximum } from './maximum.class';
 import { Minimum } from './minimum.class';
 /**
- * The `Range` object represents a range between a number of minimum and maximum.
+ * The `Range` object represents a range between a minimum and maximum.
  */
 export class Range<Min extends number, Max extends number> {
-  //#region static properties.
-  //#region static public properties.
-  /**
-   * Gets a `MinMax` interface `object` consisting of the primitive values of  `Minimum` and/or `Maximum` instances from the `Range`
-   * instance if set otherwise returns an empty `object`.
-   */
-  public static get get(): MinMax<any, any> {
-    return this.#range?.get;
-  }
-
-  /**
-   * Gets the primitive value of the `Maximum` instance from the `Range` instance if set otherwise returns `undefined`.
-   */
-  public static get max(): number | undefined {
-    return this.#range?.get?.max;
-  }
-
-  /**
-   * Gets the primitive value of the `Minimum` instance from the `Range` instance if set otherwise returns `undefined`.
-   */
-  public static get min(): number | undefined {
-    return this.#range?.get?.min;
-  }
-
-  /**
-   * The static `set` property sets a new instance of `Range` from the assigned value of the `MinMax` object and the stored primitive values
-   * from the `Minimum` and a `Maximum` instances of static `Range`.
-   */
-  public static set set(minmax: MinMax<any, any>) {
-    this.setRange(minmax);
-  }
-
-  /**
-   * The static `value` property of the `MinMax` interface sets a new instance of `Range` from the assigned value and returns an `object` of
-   * the `MinMax` interface consists of the primitive values of `Minimum` and/or `Maximum` instances, from an instance of `Range` if set
-   * otherwise returns undefined.
-   */
-  public static get value(): MinMax<any, any> {
-    return this.#range?.valueOf();
-  }
-  public static set value(minmax: MinMax<any, any>) {
-    this.set = minmax;
-  }
-  //#endregion static public properties.
-
-  /**
-   * The static property, with the help of `toStringTag`, changes the default tag to `'range'` for static `Range`.
-   */
-  public static get [Symbol.toStringTag](): string {
-    return this.#toStringTag;
-  }
-
-  //#region private static properties.
-  /**
-   * The static, private (independent) property returns an instance of `Range` if set otherwise returns undefined.
-   */
-  static #range: Range<any, any>;
-
-  /**
-   * The name for the `toStringTag` of `Symbol`.
-   */
-  static #toStringTag = 'range';
-  //#endregion static private properties.
-  //#endregion static properties.
-
   //#region instance properties.
   /**
-   * Gets a `MinMax` interface `object` consisting of the primitive values of `Minimum` and/or `Maximum` instances if set otherwise returns
-   * an empty `object`.
+   * The `get` accessor obtains the maximum range from the private `#maximum` property.
+   * @returns The return value is the maximum range of generic type variable `Max`.
+   * @angularpackage
    */
-  public get get(): MinMax<Min, Max> {
-    return this.#minmax;
+  public get max(): Max {
+    return this.#maximum.valueOf();
   }
 
   /**
-   * The `max` property of generic type variable `Max` returns the primitive value of the `Maximum` instance if set otherwise returns
-   * `undefined`.
+   * The `get` accessor obtains minimum range from the private `#minimum` property.
+   * @returns The return value is the minimum range of generic type variable `Min`.
+   * @angularpackage
    */
-  public get max(): Max | undefined {
-    return this.#maximum?.get;
+  public get min(): Min {
+    return this.#minimum.valueOf();
   }
 
   /**
-   * The `min` property of generic type variable `Min` returns the primitive value of the `Minimum` instance if set otherwise returns
-   * `undefined`.
-   */
-  public get min(): Min | undefined {
-    return this.#minimum?.get;
-  }
-
-  /**
-   * The property, with the help of `toStringTag`, changes the default tag to `'range'` for an instance of `Range`. It can be read by the
+   * The property, with the help of `toStringTag`, changes the default tag to `'Range'` for an instance of `Range`. It can be read by the
    * `typeOf()` function of `@angular-package/type`.
+   * @returnsThe return value is the word 'Range` of a `string`.
+   * @angularpackage
    */
-  get [Symbol.toStringTag](): string {
-    return Range.#toStringTag;
+  public get [Symbol.toStringTag](): string {
+    return 'Range';
   }
 
   /**
-   * The private (independent) property returns a `MinMax` interface `object` consisting of the primitive values of `Minimum` and/or
-   * `Maximum` instances if set otherwise returns an empty `object`.
+   * Private property of the `Maximum` primitive wrapper `object` with a primitive value from a given `max` of the `Range` constructor
+   * indicates the maximum range of the `number` type greater or less than the given.
    */
-  get #minmax(): MinMax<any, any> {
-    return {
-      ...(isDefined(this.#maximum?.get) && { max: this.#maximum?.get }),
-      ...(isDefined(this.#minimum?.get) && { min: this.#minimum?.get }),
-    };
-  }
+  #maximum: Maximum<Max>;
 
   /**
-   * The private (independent) property indicates the instance of `Maximum`.
+   * Private property of the `Minimum` primitive wrapper `object` with a primitive value from a given `min` of the `Range` constructor
+   * indicates the minimum range of the `number` type greater or less than the given.
    */
-  #maximum: Maximum<Max> | undefined;
-
-  /**
-   * The private (independent) property indicates the instance of `Minimum`.
-   */
-  #minimum: Minimum<Min> | undefined;
+  #minimum: Minimum<Min>;
   //#endregion instance properties.
 
   //#region static public methods.
   /**
-   * The static `defineMaximum()` method returns a new instance of `Maximum` with the provided `max`.
-   * @param max The maximum range of a generic type variable `Max` to create a new instance of `Maximum`.
-   * @param callback An optional callback `function` of the `ResultCallback` type to handle the check whether the provided `max` is a
-   * `number` type.
-   * @returns The return value is the `Maximum` instance of the primitive value from the provided `max`.
+   * The static `create()` method returns a new instance of `Range` with a range of the given `min` and `max`.
+   * @param min The minimum range of generic type variable `Min` to set with a new `Range` instance.
+   * @param max The maximum range of generic type variable `Max` to set with a new `Range` instance.
+   * @returns The return value is the `Range` instance with a range of the given `min` and `max`.
    * @angularpackage
    */
-  public static defineMaximum<Max extends number>(
-    max: Max,
-    callback?: ResultCallback<Max>
-  ): Maximum<Max> {
-    return new Maximum(max, callback);
-  }
-
-  /**
-   * The static `defineMinimum()` method returns a new instance of `Minimum` with the provided `min`.
-   * @param min The minimum range of a generic type variable `Min` to create a new instance of `Minimum`.
-   * @param callback An optional callback `function` of the `ResultCallback` type to handle the check whether the provided `min` is a
-   * `number` type.
-   * @returns The return value is the `Minimum` instance of the primitive value from the provided `min`.
-   * @angularpackage
-   */
-  public static defineMinimum<Min extends number>(
+  public static create<Min extends number, Max extends number>(
     min: Min,
-    callback?: ResultCallback<Min>
-  ): Minimum<Min> {
-    return new Minimum(min, callback);
-  }
-
-  /**
-   * The static `defineRange()` method returns a new instance of `Range` with the provided `minmax`.
-   * @param minmax The object of the `MinMax` interface to create a new instance of `Range`.
-   * @param callback An optional callback `function` of the `ResultCallback` type to handle the result of the check whether the provided
-   * `minmax` is an `object` that contains `min` or `max` property.
-   * @returns The return value is a new instance of `Range`.
-   * @angularpackage
-   */
-  public static defineRange<Min extends number, Max extends number>(
-    minmax: MinMax<Min, Max>,
-    callback?: ResultCallback<MinMax<Min, Max>>
+    max: Max
   ): Range<Min, Max> {
-    return new Range(minmax, callback);
+    return new Range(min, max);
   }
 
   /**
-   * The static `getMax()` method gets the primitive value of the `Maximum` instance from the `Range` instance if set otherwise returns
-   * `undefined`.
-   * @returns The return value is a maximum value of the range of a generic type variable `Max` or `undefined`.
+   * The static `createMaximum()` method returns the `Maximum` instance of the given maximum `value`.
+   * @param value The maximum range of a generic type variable `Value` to set with a new instance of `Maximum`.
+   * @returns The return value is the `Maximum` instance with the primitive value from the given `value`.
    * @angularpackage
    */
-  public static getMax<Max extends number>(): Max | undefined {
-    return this.#range?.getMax();
+  public static createMaximum<Value extends number>(
+    value: Value
+  ): Maximum<Value> {
+    return Maximum.create(value);
   }
 
   /**
-   * The static `getMaximum()` method gets an instance of `Maximum` from the `Range` instance if set otherwise returns `undefined`.
-   * @returns The return value is an instance of `Maximum` or `undefined`.
+   * The static `createMinimum()` method returns the `Minimum` instance of the given minimum `value`.
+   * @param value The minimum range of a generic type variable `Value` to set with a new instance of `Minimum`.
+   * @returns The return value is the `Minimum` instance with the primitive value from the given `value`.
    * @angularpackage
    */
-  public static getMaximum<Max extends number>(): Maximum<Max> | undefined {
-    return this.#range?.getMaximum();
+  public static createMinimum<Value extends number>(
+    value: Value
+  ): Minimum<Value> {
+    return Minimum.create(value);
   }
 
   /**
-   * The static `getMin()` method gets the primitive value of the `Minimum` instance from the `Range` instance if set otherwise returns
-   * `undefined`.
-   * @returns The return value is a minimum value of the range of a generic type variable `Min` or `undefined`.
-   * @angularpackage
-   */
-  public static getMin<Min extends number>(): Min | undefined {
-    return this.#range?.getMin();
-  }
-
-  /**
-   * The static `getMinimum()` method gets an instance of `Minimum` from the `Range` instance if set otherwise returns `undefined`.
-   * @returns The return value is an instance of `Minimum` or `undefined`.
-   * @angularpackage
-   */
-  public static getMinimum<Min extends number>(): Minimum<Min> | undefined {
-    return this.#range?.getMinimum();
-  }
-
-  /**
-   * The static `getRange()` method gets an instance of `Range` if set otherwise returns `undefined`.
-   * @returns The return value is an instance of `Range` or `undefined`.
-   * @angularpackage
-   */
-  public static getRange<Min extends number, Max extends number>(): Range<
-    Min,
-    Max
-  > {
-    return this.#range;
-  }
-
-  /**
-   * The static `isRange()` method returns the result of the check whether the provided `value` is an instance of `Range`.
+   * The static `isRange()` method checks whether the `value` is an instance of `Range` of any or the given minimum and maximum range.
    * @param value The value of any type to test against the `Range` instance.
-   * @param callback An optional callback function of the `ResultCallback` type to handle the result of the check whether the provided
-   * `value` is an instance of `Range`.
-   * @returns The return value is a boolean indicating whether the provided `value` is an instance of `Range`.
+   * @param min The optional minimum range of generic type variable `Min` to check whether it's equal to a minimum of the given `value`.
+   * @param max The optional maximum range of generic type variable `Max` to check whether it's equal to a maximum of the given `value`.
+   * @returns The return value is a boolean indicating whether the provided `value` is an instance of `Range` of any or the given minimum
+   * and maximum range.
+   * @angularpackage
    */
   public static isRange<Min extends number, Max extends number>(
     value: any,
-    callback?: ResultCallback<any>
+    min?: Min,
+    max?: Max
   ): value is Range<Min, Max> {
-    return isInstance(value, Range, callback);
-  }
-
-  /**
-   * The static `setMaximum()` method sets the `Maximum` instance with the provided `maximum`.
-   * @param max The maximum range of a generic type variable `Max` to create a new instance of `Maximum`.
-   * @param callback An optional callback `function` of the `ResultCallback` type to handle the result of the check whether the provided
-   * `max` is a `number` type.
-   * @returns The return value is a static `Range`.
-   * @angularpackage
-   */
-  public static setMaximum<Max extends number>(
-    max: Max,
-    callback?: ResultCallback<Max>
-  ): typeof Range {
-    this.setRange({ max }, callback as any);
-    return this;
-  }
-
-  /**
-   * The static `setMinimum()` method sets the `Minimum` instance with the provided `minimum`.
-   * @param min The minimum range of a generic type variable `Min` to create a new instance of `Minimum`.
-   * @param callback An optional callback `function` of the `ResultCallback` type to handle the result of the check whether the provided
-   * `min` is a `number` type.
-   * @returns The return value is a static `Range`.
-   * @angularpackage
-   */
-  public static setMinimum<Min extends number>(
-    min: Min,
-    callback?: ResultCallback<Min>
-  ): typeof Range {
-    this.setRange({ min }, callback as any);
-    return this;
-  }
-
-  /**
-   * The static `setRange()` method sets a new instance of `Range` with the provided `MinMax` parameter and the stored primitive values from
-   * the `Minimum` and a `Maximum` instances of static `Range`.
-   * @param minmax The object of `MinMax` interface to create a new instance of `Range`, by default its value is picked from stored
-   * `Minimum` and `Maximum` of static `Range`.
-   * @param callback An optional callback function of the `ResultCallback` type to handle the result of the check whether the provided
-   * `minmax` is an object that contains `min` or `max` property.
-   * @returns The return value is a static `Range`.
-   * @angularpackage
-   */
-  public static setRange<Min extends number, Max extends number>(
-    minmax: MinMax<Min, Max> = {},
-    callback?: ResultCallback<MinMax<Min, Max>>
-  ): typeof Range {
-    this.#range = new Range(
-      {
-        ...{
-          max: this.#range?.max,
-          min: this.#range?.min,
-        },
-        ...minmax,
-      },
-      callback
-    );
-    return this;
+    return true;
+    // return isInstance(value, Range, callback);
   }
   //#endregion static public methods.
 
   //#region constructor.
   /**
-   * Creates a new instance of `Range`.
-   * @param range The required `MinMax` object of optional `min` and `max` properties to create a new instance.
-   * @param callback An optional callback function of the `ResultCallback` type to handle the check whether the provided `range` is an
-   * object that contains `min` or `max` properties.
-   * @returns The return value is a new instance of `Range`.
+   * Creates the `Range` instance with a range of the given `min` and `max`.
+   * @param min The minimum range of generic type variable `Min` to set with a new `Range` instance.
+   * @param max The maximum range of generic type variable `Max` to set with a new `Range` instance.
+   * @returns The return value is a new instance of `Range` of the given minimum and maximum.
    * @angularpackage
    */
-  constructor(
-    range: MinMax<Min, Max>,
-    callback?: ResultCallback<MinMax<Min, Max>>
-  ) {
-    guardObjectSomeKeys(range, ['max', 'min'], callback) &&
-      (isDefined(range.max) && (this.#maximum = Range.defineMaximum(range.max)),
-      isDefined(range.min) && (this.#minimum = Range.defineMinimum(range.min)));
+  constructor(min: Min, max: Max) {
+    this.#maximum = new Maximum(max);
+    this.#minimum = new Minimum(min);
+    Object.defineProperties(this, {
+      min: {
+        value: min,
+      },
+      max: {
+        value: max,
+      },
+    });
   }
   //#endregion constructor.
 
-  //#region instance methods.
   //#region instance public methods.
   /**
-   * Gets the primitive value of the `Maximum` instance from the `Range` instance if set otherwise returns `undefined`.
-   * @returns The return value is the primitive maximum value of the `Range` of a generic type variable `Max` or `undefined`.
+   * Checks whether the value is in the range of a specified `Range` object.
+   * @param value The value of number type to test.
+   * @returns The return value is a `boolean` indicating whether the given `value` is in the range of a specified `Range` object.
    * @angularpackage
    */
-  public getMax(): Max | undefined {
-    return this.#maximum?.get;
+  public has(value: number): boolean {
+    return this.minLessThan(value) && this.maxGreaterThan(value);
   }
 
   /**
-   * Gets the `Maximum` instance from the `Range` instance if set otherwise returns `undefined`.
-   * @returns The return value is an instance of `Maximum` or `undefined`.
+   * Checks whether every value of the given `values` is in the range of a specified `Range` object.
+   * @param value A rest parameter of numbers to test.
+   * @returns The return value is a `boolean` indicating whether every value of the given `values` is in the range of a specified `Range`
+   * object.
    * @angularpackage
    */
-  public getMaximum(): Maximum<Max> | undefined {
-    return this.#maximum;
+  public hasEvery(...values: number[]): boolean {
+    return values.every((value) => this.has(value));
   }
 
   /**
-   * Gets the primitive value of the `Minimum` instance from the `Range` instance if set otherwise returns `undefined`.
-   * @returns The return value is the primitive minimum value of the range of a generic type variable `Min` or `undefined`.
+   * Checks whether some `values` are in the range of a specified `Range` object.
+   * @param value A rest parameter of numbers to test.
+   * @returns The return value is a `boolean` indicating whether some `values` are in the range of a specified `Range` object.
    * @angularpackage
    */
-  public getMin(): Min | undefined {
-    return this.#minimum?.get;
+  public hasSome(...values: number[]): boolean {
+    return values.some((value) => this.has(value));
   }
 
   /**
-   * Gets the `Minimum` instance from the `Range` instance if set otherwise returns `undefined`.
-   * @returns The return value is an instance of `Minimum` or `undefined`.
+   * Checks whether the range of a specified `Range` object is between a range of the given `min` and `max`.
+   * @param min The minimum range of number type to test.
+   * @param max The maximum range of number type to test.
+   * @returns The return value is a `boolean` type indicating whether the range of a specified `Range` object is between a range of the
+   * given `min` and `max`.
    * @angularpackage
    */
-  public getMinimum(): Minimum<Min> | undefined {
-    return this.#minimum;
+  public isBetween(min: number, max: number): boolean {
+    return this.minLessThan(min) && this.maxGreaterThan(max);
   }
 
   /**
-   * The `valueOf()` method returns the `MinMax` interface object consisting of the primitive values of `Minimum` and/or `Maximum` instances
-   * if set or an empty `object`.
-   * @returns The return value is an `object` that consists of the primitive values of `Minimum` and/or `Maximum` instances or an empty
-   * `object`.
+   * Checks whether the range of a specified `Range` object is between every range of the given `ranges`.
+   * @param ranges A rest parameter of array type ranges to test.
+   * @returns The return value is a `boolean` type indicating whether the range of a specified `Range` object is between every range of the
+   * given `ranges`.
    * @angularpackage
    */
-  public valueOf(): MinMax<Min, Max> {
-    return this.#minmax;
+  public isBetweenEvery(...ranges: [number, number][]): boolean {
+    return ranges.every((range) => this.hasEvery(...range));
+  }
+
+  /**
+   * Checks whether the range of a specified `Range` object is between some given `ranges`.
+   * @param ranges A rest parameter of array type ranges to test.
+   * @returns The return value is a `boolean` type indicating whether the range of a specified `Range` object is between every range of the
+   * given `ranges`.
+   * @angularpackage
+   */
+  public isBetweenSome(...ranges: [number, number][]): boolean {
+    return ranges.some((range) => this.hasEvery(...range));
+  }
+
+  /**
+   * The `getMax()` method gets the maximum range of a specified `Range` object.
+   * @returns The return value is the maximum range of a generic type variable `Max`.
+   * @angularpackage
+   */
+  public getMax(): Max {
+    return this.#maximum.valueOf();
+  }
+
+  /**
+   * The `getMin()` method gets the minimum range of a specified `Range` object.
+   * @returns The return value is the minimum range of a generic type variable `Min`.
+   * @angularpackage
+   */
+  public getMin(): Min {
+    return this.#minimum.valueOf();
+  }
+
+  /**
+   * The `maxGreaterThan()` method checks whether the value is less than the maximum range of a specified `Range` object.
+   * @param value The value of number type to test.
+   * @returns The return value is a `boolean` type indicating whether the given `value` is less than maximum range of a specified `Range` object.
+   * @angularpackage
+   */
+  public maxGreaterThan(value: number): boolean {
+    return this.#maximum.greaterThan(value);
+  }
+
+  /**
+   * The `maxLessThan()` method checks whether the value is greater than the maximum range of a specified `Range` object.
+   * @param value The value of number type to test.
+   * @returns The return value is a `boolean` type indicating whether the given `value` is greater than maximum range of a specified `Range` object.
+   * @angularpackage
+   */
+  public maxLessThan(value: number): boolean {
+    return this.#maximum.lessThan(value);
+  }
+
+  /**
+   * The `minGreaterThan()` method checks whether the value is less than a minimum range of a specified `Range` object.
+   * @param value The value of number type to test.
+   * @returns The return value is a `boolean` type indicating whether the given `value` is less than minimum range of a specified `Range` object.
+   * @angularpackage
+   */
+  public minGreaterThan(value: number): boolean {
+    return this.#minimum.greaterThan(value);
+  }
+
+  /**
+   * The method `minLessThan()` checks whether the value is greater than the minimum range of a specified `Range` object.
+   * @param value The value of number type to test.
+   * @returns The return value is a `boolean` type indicating whether the given `value` is greater than minimum range of a specified `Range` object.
+   * @angularpackage
+   */
+  public minLessThan(value: number): boolean {
+    return this.#minimum.lessThan(value);
+  }
+
+  /**
+   * The `toArray()` method returns a read-only array of the range in order minimum and maximum.
+   * @returns The return value is a read-only array of the range in order minimum and maximum.
+   * @angularpackage
+   */
+  public toArray(): readonly [Min, Max] {
+    return [this.#minimum.valueOf(), this.#maximum.valueOf()];
+  }
+
+  /**
+   * The `valueOf()` method returns a read-only object consisting of the primitive values of `Minimum` and `Maximum` instances.
+   * @returns The return value is a frozen `object` consisting of the primitive values of `Minimum` and `Maximum` instances.
+   * @angularpackage
+   */
+  public valueOf(): Readonly<{ min: Min; max: Max }> {
+    return Object.freeze({
+      min: this.#minimum.valueOf(),
+      max: this.#maximum.valueOf(),
+    });
   }
   //#endregion instance public methods.
-  //#endregion instance methods.
 }
