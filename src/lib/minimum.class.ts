@@ -1,7 +1,7 @@
 // Class.
 import { Inequality } from './inequality.class';
 /**
- * The `Maximum` primitive wrapper object extended by the `Inequality` abstract primitive wrapper `object` represents the minimum number
+ * The `Minimum` primitive wrapper object extended by the `Inequality` abstract primitive wrapper `object` represents the minimum number
  * greater or less than the given.
  */
 export class Minimum<Value extends number> extends Inequality<Value> {
