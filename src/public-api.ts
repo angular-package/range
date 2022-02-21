@@ -9,5 +9,6 @@ export {
   Less,
   Maximum,
   Minimum,
+  Number,
   Range,
 } from './lib';
