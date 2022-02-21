@@ -5,25 +5,7 @@ import { Minimum } from './minimum.class';
  * The `Range` object represents a range between a minimum and maximum.
  */
 export class Range<Min extends number, Max extends number> {
-  //#region instance properties.
-  /**
-   * The `get` accessor obtains the maximum range from the private `#maximum` property.
-   * @returns The return value is the maximum range of generic type variable `Max`.
-   * @angularpackage
-   */
-  public get max(): Max {
-    return this.#maximum.valueOf();
-  }
-
-  /**
-   * The `get` accessor obtains minimum range from the private `#minimum` property.
-   * @returns The return value is the minimum range of generic type variable `Min`.
-   * @angularpackage
-   */
-  public get min(): Min {
-    return this.#minimum.valueOf();
-  }
-
+  //#region instance accessors.
   /**
    * The property, with the help of `toStringTag`, changes the default tag to `'Range'` for an instance of `Range`. It can be read by the
    * `typeOf()` function of `@angular-package/type`.
@@ -33,25 +15,45 @@ export class Range<Min extends number, Max extends number> {
   public get [Symbol.toStringTag](): string {
     return 'Range';
   }
+  //#endregion instance accessors.
+
+  //#region instance properties.
+  //#region public instance properties.
+  /**
+   * The `max` read-only property is the maximum range of generic type variable `Max` of a specified `Range` object.
+   * @returns The return value is the maximum range of generic type variable `Max`.
+   * @angularpackage
+   */
+  public readonly max!: Max;
 
   /**
+   * The `min` read-only property is the minimum range of generic type variable `Min` of a specified `Range` object.
+   * @returns The return value is the minimum range of generic type variable `Min`.
+   * @angularpackage
+   */
+  public readonly min!: Min;
+  //#endregion public instance properties.
+
+  //#region private instance properties.
+  /**
    * Private property of the `Maximum` primitive wrapper `object` with a primitive value from a given `max` of the `Range` constructor
-   * indicates the maximum range of the `number` type greater or less than the given.
+   * indicates the maximum range.
    */
   #maximum: Maximum<Max>;
 
   /**
    * Private property of the `Minimum` primitive wrapper `object` with a primitive value from a given `min` of the `Range` constructor
-   * indicates the minimum range of the `number` type greater or less than the given.
+   * indicates the minimum range.
    */
   #minimum: Minimum<Min>;
+  //#endregion private instance properties.
   //#endregion instance properties.
 
   //#region static public methods.
   /**
    * The static `create()` method returns a new instance of `Range` with a range of the given `min` and `max`.
-   * @param min The minimum range of generic type variable `Min` to set with a new `Range` instance.
-   * @param max The maximum range of generic type variable `Max` to set with a new `Range` instance.
+   * @param min The **minimum** range of generic type variable `Min` to set with a new `Range` instance.
+   * @param max The **maximum** range of generic type variable `Max` to set with a new `Range` instance.
    * @returns The return value is the `Range` instance with a range of the given `min` and `max`.
    * @angularpackage
    */
@@ -59,7 +61,7 @@ export class Range<Min extends number, Max extends number> {
     min: Min,
     max: Max
   ): Range<Min, Max> {
-    return new Range(min, max);
+    return new this(min, max);
   }
 
   /**
@@ -100,8 +102,10 @@ export class Range<Min extends number, Max extends number> {
     min?: Min,
     max?: Max
   ): value is Range<Min, Max> {
-    return true;
-    // return isInstance(value, Range, callback);
+    return typeof value === 'object' && value instanceof this
+      ? (typeof min === 'number' ? value.min === min : true) &&
+          (typeof max === 'number' ? value.max === max : true)
+      : false;
   }
   //#endregion static public methods.
 
@@ -116,12 +120,17 @@ export class Range<Min extends number, Max extends number> {
   constructor(min: Min, max: Max) {
     this.#maximum = new Maximum(max);
     this.#minimum = new Minimum(min);
+    // Define the `min` and `max` property.
     Object.defineProperties(this, {
       min: {
         value: min,
+        enumerable: true,
+        writable: false,
       },
       max: {
         value: max,
+        enumerable: true,
+        writable: false,
       },
     });
   }
@@ -129,17 +138,21 @@ export class Range<Min extends number, Max extends number> {
 
   //#region instance public methods.
   /**
-   * Checks whether the value is in the range of a specified `Range` object.
-   * @param value The value of number type to test.
+   * The `has()` method checks whether the value is in the range of a specified `Range` object.
+   * @param value The value of `number` type to test.
    * @returns The return value is a `boolean` indicating whether the given `value` is in the range of a specified `Range` object.
    * @angularpackage
    */
   public has(value: number): boolean {
-    return this.minLessThan(value) && this.maxGreaterThan(value);
+    return (
+      (this.minLessThan(value) && this.maxGreaterThan(value)) ||
+      value === this.min ||
+      value === this.max
+    );
   }
 
   /**
-   * Checks whether every value of the given `values` is in the range of a specified `Range` object.
+   * The `hasEvery()` method checks whether every value of the given `values` is in the range of a specified `Range` object.
    * @param value A rest parameter of numbers to test.
    * @returns The return value is a `boolean` indicating whether every value of the given `values` is in the range of a specified `Range`
    * object.
@@ -160,15 +173,15 @@ export class Range<Min extends number, Max extends number> {
   }
 
   /**
-   * Checks whether the range of a specified `Range` object is between a range of the given `min` and `max`.
-   * @param min The minimum range of number type to test.
-   * @param max The maximum range of number type to test.
+   * The `isBetween()` method checks whether range of the given `min` and `max` is between the range of a specified `Range` object.
+   * @param min The **minimum** range of `number` type to test.
+   * @param max The **maximum** range of `number` type to test.
    * @returns The return value is a `boolean` type indicating whether the range of a specified `Range` object is between a range of the
    * given `min` and `max`.
    * @angularpackage
    */
   public isBetween(min: number, max: number): boolean {
-    return this.minLessThan(min) && this.maxGreaterThan(max);
+    return min < max ? this.hasEvery(min, max) : false;
   }
 
   /**
@@ -179,18 +192,22 @@ export class Range<Min extends number, Max extends number> {
    * @angularpackage
    */
   public isBetweenEvery(...ranges: [number, number][]): boolean {
-    return ranges.every((range) => this.hasEvery(...range));
+    return ranges.every((range) =>
+      range[0] < range[1] ? this.hasEvery(...range) : false
+    );
   }
 
   /**
    * Checks whether the range of a specified `Range` object is between some given `ranges`.
    * @param ranges A rest parameter of array type ranges to test.
-   * @returns The return value is a `boolean` type indicating whether the range of a specified `Range` object is between every range of the
-   * given `ranges`.
+   * @returns The return value is a `boolean` type indicating whether the range of a specified `Range` object is between some given
+   * `ranges`.
    * @angularpackage
    */
   public isBetweenSome(...ranges: [number, number][]): boolean {
-    return ranges.some((range) => this.hasEvery(...range));
+    return ranges.some((range) =>
+      range[0] < range[1] ? this.hasEvery(...range) : false
+    );
   }
 
   /**
@@ -214,7 +231,8 @@ export class Range<Min extends number, Max extends number> {
   /**
    * The `maxGreaterThan()` method checks whether the value is less than the maximum range of a specified `Range` object.
    * @param value The value of number type to test.
-   * @returns The return value is a `boolean` type indicating whether the given `value` is less than maximum range of a specified `Range` object.
+   * @returns The return value is a `boolean` type indicating whether the given `value` is less than maximum range of a specified `Range`
+   * object.
    * @angularpackage
    */
   public maxGreaterThan(value: number): boolean {
@@ -224,7 +242,8 @@ export class Range<Min extends number, Max extends number> {
   /**
    * The `maxLessThan()` method checks whether the value is greater than the maximum range of a specified `Range` object.
    * @param value The value of number type to test.
-   * @returns The return value is a `boolean` type indicating whether the given `value` is greater than maximum range of a specified `Range` object.
+   * @returns The return value is a `boolean` type indicating whether the given `value` is greater than maximum range of a specified `Range`
+   * object.
    * @angularpackage
    */
   public maxLessThan(value: number): boolean {
@@ -234,7 +253,8 @@ export class Range<Min extends number, Max extends number> {
   /**
    * The `minGreaterThan()` method checks whether the value is less than a minimum range of a specified `Range` object.
    * @param value The value of number type to test.
-   * @returns The return value is a `boolean` type indicating whether the given `value` is less than minimum range of a specified `Range` object.
+   * @returns The return value is a `boolean` type indicating whether the given `value` is less than minimum range of a specified `Range`
+   * object.
    * @angularpackage
    */
   public minGreaterThan(value: number): boolean {
@@ -244,7 +264,8 @@ export class Range<Min extends number, Max extends number> {
   /**
    * The method `minLessThan()` checks whether the value is greater than the minimum range of a specified `Range` object.
    * @param value The value of number type to test.
-   * @returns The return value is a `boolean` type indicating whether the given `value` is greater than minimum range of a specified `Range` object.
+   * @returns The return value is a `boolean` type indicating whether the given `value` is greater than minimum range of a specified `Range`
+   * object.
    * @angularpackage
    */
   public minLessThan(value: number): boolean {
