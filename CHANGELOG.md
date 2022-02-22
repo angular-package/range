@@ -17,6 +17,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - The `get` accessor `range` that obtains the range of an `array` number from the minimum to the maximum with the step of a specified `Range` object; [e0aaca9]
 - The `get` accessor `step` that obtains the step of a specified `Range` object; [e0aaca9]
 - The `#step` private property of the generic type variable `Step` that indicates the range step; [e0aaca9]
-- The`step` parameter to the static `create()` method of generic type variable `Step`; 
+- The`step` parameter to the static `create()` method of generic type variable `Step`; [e0aaca9]
 
 [e0aaca9]: https://github.com/angular-package/range/commit/e0aaca9b5bc146e06278752979d825f4832c0502
