@@ -11,7 +11,7 @@ export class Range<
 > {
   //#region instance accessors.
   /**
-   * The `get` accessor obtains the range of an `Array` number from the minimum to the maximum with the step of a specified `Range` object.
+   * The `get` accessor obtains the range of an `Array` of the minimum to the maximum with the step of a specified `Range` object.
    * @returns The return value is the range from minimum to maximum of an `Array` of number.
    * @angularpackage
    */
@@ -84,11 +84,11 @@ export class Range<
 
   //#region static public methods.
   /**
-   * The static `create()` method returns a new instance of `Range` with a range of the given `min` and `max`.
+   * The static `create()` method returns a new instance of `Range` with a range of the given required `min`, `max` and optional `step`.
    * @param min The **minimum** range of generic type variable `Min` to set with a new `Range` instance.
    * @param max The **maximum** range of generic type variable `Max` to set with a new `Range` instance.
-   * @param step Optional step to set with a new `Range` instance, by default 1.
-   * @returns The return value is the `Range` instance with a range of the given `min` and `max`.
+   * @param step Optional step of generic type variable `Step` to set with a new `Range` instance, by default `1`.
+   * @returns The return value is the `Range` instance with a range of the given required `min`, `max` and optional `step`.
    * @angularpackage
    */
   public static create<
@@ -102,8 +102,8 @@ export class Range<
   /**
    * Creates the `Range` instance from the given random numbers and the step.
    * @param numbers An `Array` of numbers to find a range and create a new instance.
-   * @param step Optional step to set with a new `Range` instance, by default 1.
-   * @returns The return value is the `Range` instance created from the given numbers and a step.
+   * @param step Optional step of generic type variable `Step` to set with a new `Range` instance, by default `1`.
+   * @returns The return value is the `Range` instance created from the given required random numbers and the optional step.
    * @angularpackage
    */
   public static createFrom<Step extends number = 1>(
@@ -142,31 +142,40 @@ export class Range<
   }
 
   /**
-   * The static `isRange()` method checks whether the `value` is an instance of `Range` of any or the given minimum and maximum range.
+   * The static `isRange()` method checks whether the `value` is an instance of `Range` of any or the given minimum, maximum range, and
+   * step.
    * @param value The value of any type to test against the `Range` instance.
    * @param min The optional minimum range of generic type variable `Min` to check whether it's equal to a minimum of the given `value`.
    * @param max The optional maximum range of generic type variable `Max` to check whether it's equal to a maximum of the given `value`.
-   * @returns The return value is a boolean indicating whether the provided `value` is an instance of `Range` of any or the given minimum
-   * and maximum range.
+   * @param step Optional step of generic type variable `Step` to check whether it's equal to the step of the given `value`.
+   * @returns The return value is a boolean indicating whether the provided `value` is an instance of `Range` of any or the given minimum,
+   * maximum range and step.
    * @angularpackage
    */
-  public static isRange<Min extends number, Max extends number>(
+  public static isRange<
+    Min extends number,
+    Max extends number,
+    Step extends number
+  >(
     value: any,
     min?: Min,
-    max?: Max
-  ): value is Range<Min, Max> {
+    max?: Max,
+    step?: Step
+  ): value is Range<Min, Max, Step> {
     return typeof value === 'object' && value instanceof this
       ? (typeof min === 'number' ? value.min === min : true) &&
-          (typeof max === 'number' ? value.max === max : true)
+          (typeof max === 'number' ? value.max === max : true) &&
+          (typeof step === 'number' ? value.step === step : true)
       : false;
   }
   //#endregion static public methods.
 
   //#region constructor.
   /**
-   * Creates the `Range` instance with a range of the given `min` and `max`.
+   * Creates the `Range` instance with a range of the given required `min`, `max` and optional `step`.
    * @param min The minimum range of generic type variable `Min` to set with a new `Range` instance.
    * @param max The maximum range of generic type variable `Max` to set with a new `Range` instance.
+   * @param step Optional step of generic type variable `Step` to set with a new `Range` instance, by default `1`.
    * @returns The return value is a new instance of `Range` of the given minimum and maximum.
    * @angularpackage
    */
@@ -192,39 +201,43 @@ export class Range<
 
   //#region instance public methods.
   /**
-   * The `stepByStep()` method performs a callback function with the ability to decide when to move to the next step of the range.
-   * @param callbackFn A function that accepts up to three arguments. The `value` is a function generator that allows deciding when to move
-   * to the next step, `step` is the step, and `max` is the maximum of a specified `Range` object.
-   * @returns The return value is the `Range` instance.
-   * @angularpackage
-   */
-  public stepByStep(
-    callbackFn: (value: Generator<number>, step: Step, max: Max) => void
-  ): this {
-    const t = this;
-    callbackFn(
-      (function* stepByStep(current = t.min - t.step): Generator<number> {
-        while (current < t.max) {
-          yield (current += t.step);
-        }
-      })(),
-      t.step,
-      t.max
-    );
-    return this;
-  }
-
-  /**
    * The `forEachStep()` method performs the specified action for each step in the range of an array.
    * @param forEachStep A function that accepts up to three arguments. It's called one time for each step in the range.
    * @returns The return value is the `Range` instance.
    * @angularpackage
    */
   public forEachStep(
-    forEachStep: (value: number, index: number, range: number[]) => void
+    forEachStep: (step: number, index: number, range: number[]) => void
   ): this {
     this.range.forEach(forEachStep);
     return this;
+  }
+
+  /**
+   * The `getMax()` method gets the maximum range of a specified `Range` object.
+   * @returns The return value is the maximum range of a generic type variable `Max`.
+   * @angularpackage
+   */
+  public getMax(): Max {
+    return this.#maximum.valueOf();
+  }
+
+  /**
+   * The `getMin()` method gets the minimum range of a specified `Range` object.
+   * @returns The return value is the minimum range of a generic type variable `Min`.
+   * @angularpackage
+   */
+  public getMin(): Min {
+    return this.#minimum.valueOf();
+  }
+
+  /**
+   * The `getRange()` method returns a range of numbers from minimum to maximum with the step of a specified `Range` object.
+   * @returns The return value is a range of numbers from minimum to maximum of a read-only `Array`.
+   * @angularpackage
+   */
+  public getRange(): Readonly<Array<number>> {
+    return this.range;
   }
 
   /**
@@ -301,33 +314,6 @@ export class Range<
   }
 
   /**
-   * The `getMax()` method gets the maximum range of a specified `Range` object.
-   * @returns The return value is the maximum range of a generic type variable `Max`.
-   * @angularpackage
-   */
-  public getMax(): Max {
-    return this.#maximum.valueOf();
-  }
-
-  /**
-   * The `getMin()` method gets the minimum range of a specified `Range` object.
-   * @returns The return value is the minimum range of a generic type variable `Min`.
-   * @angularpackage
-   */
-  public getMin(): Min {
-    return this.#minimum.valueOf();
-  }
-
-  /**
-   * The `getRange()` method returns a range of numbers from minimum to maximum with the step of a specified `Range` object.
-   * @returns The return value is a range of numbers from minimum to maximum of a read-only `Array`.
-   * @angularpackage
-   */
-  public getRange(): Readonly<Array<number>> {
-    return this.range;
-  }
-
-  /**
    * The `maxGreaterThan()` method checks whether the value is less than the maximum range of a specified `Range` object.
    * @param value The value of number type to test.
    * @returns The return value is a `boolean` type indicating whether the given `value` is less than maximum range of a specified `Range`
@@ -369,6 +355,29 @@ export class Range<
    */
   public minLessThan(value: number): boolean {
     return this.#minimum.lessThan(value);
+  }
+
+  /**
+   * The `stepByStep()` method performs a callback function with the ability to decide when to move to the next step of the range.
+   * @param callbackFn A function that accepts up to three arguments. The `value` is a function generator that allows deciding when to move
+   * to the next step, `step` is the step, and `max` is the maximum of a specified `Range` object.
+   * @returns The return value is the `Range` instance.
+   * @angularpackage
+   */
+  public stepByStep(
+    callbackFn: (value: Generator<number>, step: Step, max: Max) => void
+  ): this {
+    const t = this;
+    callbackFn(
+      (function* stepByStep(current = t.min - t.step): Generator<number> {
+        while (current < t.max) {
+          yield (current += t.step);
+        }
+      })(),
+      t.step,
+      t.max
+    );
+    return this;
   }
 
   /**
