@@ -6,6 +6,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.0-rc] - 2022-02-26
+
+### [1.0.0-rc] Added
+
+- `Number` object. [32c36d4]
+- `value` parameter of number type to the static `create()` method and `constructor()`. [622847e]
+- private `#value` property that indicates the range current value of the number type. [622847e]
+- `get` accessor `value` to retrieve the range value. [622847e]
+- `set` accessor `value` to set the `#range` property including range of specified object. [622847e]
+- `get` accessor `steps` to retrieve the number of steps. [622847e]
+- the `getCurrentRange()` `getCurrentStep()` `getValueOfStep()` `setValue()` `setValueToStep()` `valueDown()` `valueUp()` methods. [622847e]
+
+### [1.0.0-rc] Changed
+
+- the static `isRange()` method by adding `step` parameter to check. [870c5e4]
+- deprecate `getMin()` `getMax()` `valueOf()` `toArray()` methods. [622847e]
+- `get` accessor `range`  to use `getRange()` method of instance and its return type to readonly. [622847e]
+- the `getRange()` method to obtains the range to the specified value. [622847e]
+- the `isBetween()` `isBetweenEvery()` `isBetweenSome()` methods to include minimum and maximum. [622847e]
+- `forEachStep()` method parameter names and set `range` parameter type to readonly. [622847e]
+
+[870c5e4]: https://github.com/angular-package/range/commit/870c5e4abb6addf140d6ae85ad7018b8ea117280
+[32c36d4]: https://github.com/angular-package/range/commit/32c36d4ea5f3b7745571cb4034cd8e887aac2a00
+[622847e]: https://github.com/angular-package/range/commit/622847e0d3042da88137e8a36c69fdeb3a8b7054
+
 ## [1.0.0-beta.0] - 2022-02-22
 
 ### [1.0.0-beta.0] Added
