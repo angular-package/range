@@ -1,6 +1,6 @@
 {
   "name": "@angular-package/range",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-rc",
   "description": "The range between minimum and maximum.",
   "author": "angular-package <contact@angular-package.dev> (https://angular-package.dev)",
   "homepage": "https://range.angular-package.dev",
