@@ -5,20 +5,10 @@ import { Inequality } from './inequality.class';
  * less than the given.
  */
 export class Number<Value extends number> extends Inequality<Value> {
-  //#region instance public properties.
-  /**
-   * The `get` accessor, with the help of `toStringTag`, changes the default tag to `'Number'` for an instance of `Number`. It can be read
-   * by the `typeOf()` function of `@angular-package/type`.
-   */
-  public get [Symbol.toStringTag](): string {
-    return 'Number';
-  }
-  //#endregion instance public properties.
-
   //#region static public methods.
   /**
    * Creates the `Number` instance with the given primitive `value`.
-   * @param value The maximum number of generic type variable `Value` to set with a new instance.
+   * @param value The number of generic type variable `Value` to set with a new instance.
    * @returns The return value is the `Number` instance of the given primitive `value`.
    * @angularpackage
    */
@@ -29,18 +19,19 @@ export class Number<Value extends number> extends Inequality<Value> {
   /**
    * Checks whether the value of any type is the `Number` instance of any or the given primitive value.
    * @param value The value of any type to test against the `Number` instance.
-   * @param max Optional maximum of the generic type variable `Value` to check if it's the primitive value of the given `value`.
-   * @returns The return value is a `boolean` indicating whether the provided value is an instance of `Number`.
+   * @param numberValue Optional number of the generic type variable `Value` to check if it's the primitive value of the given `value`.
+   * @returns The return value is a `boolean` indicating whether the provided value is an instance of `Number` of any or the given
+   * `numberValue`.
    * @angularpackage
    */
   public static isNumber<Value extends number>(
     value: any,
-    max?: Value
+    numberValue?: Value
   ): value is Number<Value> {
     return (
       typeof value === 'object' &&
       value instanceof this &&
-      (typeof max === 'number' ? value.valueOf() === max : true)
+      (typeof numberValue === 'number' ? value.valueOf() === numberValue : true)
     );
   }
   //#endregion static methods.
