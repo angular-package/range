@@ -20,7 +20,8 @@ export class Range<
   }
 
   /**
-   * The `get` accessor obtains the step of a specified `Range` object. It's used to return the entire range or current range.
+   * The `get` accessor obtains the step of a specified `Range` object. It's used to return the entire range, get the step of the range
+   * value, and change the range value.
    * @returns The return value is the step of generic type variable `Step`.
    * @angularpackage
    */
@@ -97,12 +98,13 @@ export class Range<
   #minimum: Minimum<Min>;
 
   /**
-   * The private property of the generic type variable `Step` indicates the range step.
+   * The private property of the generic type variable `Step` indicates the range step. It's used to return the entire range, get the
+   * step of the range value, and change the range value.
    */
   #step: Step;
 
   /**
-   * The private property of the `number` type indicates the range value.
+   * The private property of the `number` type indicates the range value. It can be set by the `setValue()` method and setter `value`.
    */
   #value?: number;
   //#endregion private instance properties.
@@ -171,8 +173,7 @@ export class Range<
   }
 
   /**
-   * The static `isRange()` method checks whether the `value` is an instance of `Range` of any or the given minimum, maximum range, and
-   * step.
+   * The static `isRange()` method checks whether the `value` is an instance of `Range` of any or the given minimum, maximum, and step.
    * @param value The value of any type to test against the `Range` instance.
    * @param min The optional minimum range of generic type variable `Min` to check whether it's equal to a minimum of the given `value`.
    * @param max The optional maximum range of generic type variable `Max` to check whether it's equal to a maximum of the given `value`.
@@ -206,7 +207,9 @@ export class Range<
    * @param max The maximum range of generic type variable `Max` to set with a new `Range` instance.
    * @param value The optional value of the `number` type between the given `min` and `max` specifies the default value of a new `Range`
    * instance.
-   * @param step Optional step of generic type variable `Step` to set with a new `Range` instance, by default `1`.
+   * @param step Optional step of generic type variable `Step` to set with a new `Range` instance, by default `1`. The step is used by the
+   * `range` accessor, `getRange()` , `getRangeOfStep()` and `stepByStep()` methods to return the entire range and also by the
+   * `valueDown()`, valueUp() methods to respectively decrement, increment range value.
    * @returns The return value is a new instance of `Range` of the given minimum and maximum.
    * @angularpackage
    */
@@ -265,7 +268,7 @@ export class Range<
    */
   public getCurrentStep(): number | undefined {
     return typeof this.value === 'number'
-      ? Math.floor(this.value / this.step)
+      ? Math.floor(this.value / this.#step)
       : undefined;
   }
 
@@ -292,7 +295,7 @@ export class Range<
   /**
    * The `getRange ()` method returns a range of numbers by the specified step from minimum to the given `value` of the specified` Range`
    * object.
-   * @param value Optional maximum range value of `number` type of returned `array` by default the `value` is the maximum range.
+   * @param value Optional maximum range value of `number` type of returned `array` by default it's the maximum range.
    * @returns The return value is a range of numbers of a read-only `Array` from minimum to the given `value`.
    * @angularpackage
    */
@@ -310,7 +313,8 @@ export class Range<
    * `Range` object.
    * @param step Step of `number` type is the maximum range of the returned `array`. The value must be less or equal to the number of range
    * steps.
-   * @returns The return value is a range of numbers of a read-only `Array` from minimum to step of the given `toStep`.
+   * @returns The return value is a range of numbers of a read-only `Array` from minimum to step of the given `step` if the given `step`
+   * is within a range, otherwise an empty `Array`.
    * @angularpackage
    */
   public getRangeOfStep(step: number): Readonly<Array<number>> {
@@ -324,9 +328,9 @@ export class Range<
   }
 
   /**
-   * The `getValueOfStep()` method returns the range value of the given `step`.
+   * The `getValueOfStep()` method returns the range value of the given `step`. If the given `step` is not within range returns `undefined`.
    * @param step Step parameter of `number` type to retrieve the range value.
-   * @returns The return value is the range value of the given `step` if exists otherwise `undefined`.
+   * @returns The return value is the range value of the given `step` within a range otherwise `undefined`.
    * @angularpackage
    */
   public getValueOfStep(step: number): number | undefined {
@@ -463,18 +467,14 @@ export class Range<
   }
 
   /**
-   * The method `setValueToStep()` sets the value of the specified `Range` object to the value of the given `step`.
-   * @param step Step of `number` type to retrieve the value from the range and set it as the range current value.
+   * The method `setValueToStep()` sets the value of the specified `Range` object to the value of the given `step`. If the given `step` is
+   * not within range the value is not changed.
+   * @param step Step of `number` type to retrieve the value from the range and set it as the range current `value`.
    * @returns The return value is the `Range` instance.
    * @angularpackage
    */
   public setValueToStep(step: number): this {
-    step > 0 &&
-      Object.defineProperty(this, 'value', {
-        configurable: true,
-        value: this.getValueOfStep(step),
-        writable: false,
-      });
+    step > 0 && (this.value = this.getValueOfStep(step));
     return this;
   }
 
