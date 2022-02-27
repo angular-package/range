@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.0-rc.0] - 2022-02-27
+
+### [1.0.0-rc.0] Fixed
+
+- Fix the `setValueToStep()` method by removing defining the value property.
+
+[04d2d32]: https://github.com/angular-package/range/commit/04d2d3218b544ff560aa248cdacbb60ad284bd5f
+
 ## [1.0.0-rc] - 2022-02-26
 
 ### [1.0.0-rc] Added
@@ -20,12 +28,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### [1.0.0-rc] Changed
 
-- the static `isRange()` method by adding `step` parameter to check. [870c5e4]
-- deprecate `getMin()` `getMax()` `valueOf()` `toArray()` methods. [622847e]
+- Add the `step` parameter to check in the static `isRange()` method. [870c5e4]
 - `get` accessor `range`  to use `getRange()` method of instance and its return type to readonly. [622847e]
 - the `getRange()` method to obtains the range to the specified value. [622847e]
 - the `isBetween()` `isBetweenEvery()` `isBetweenSome()` methods to include minimum and maximum. [622847e]
 - `forEachStep()` method parameter names and set `range` parameter type to readonly. [622847e]
+
+### [1.0.0-rc] Deprecated
+
+- Deprecate the `getMin()` `getMax()` `valueOf()` `toArray()` methods. [622847e]
 
 [870c5e4]: https://github.com/angular-package/range/commit/870c5e4abb6addf140d6ae85ad7018b8ea117280
 [32c36d4]: https://github.com/angular-package/range/commit/32c36d4ea5f3b7745571cb4034cd8e887aac2a00
