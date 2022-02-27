@@ -182,7 +182,7 @@ testing.describe(`Range`, () => {
           expect(range.setValueToStep(3).value).toEqual(range.getValueOfStep(3));
           expect(range.setValueToStep(0).value).toEqual(-21);
           expect(range.setValueToStep(5).value).toEqual(range.getValueOfStep(5));
-          expect(range.setValueToStep(20).value).toBeUndefined();
+          expect(range.setValueToStep(20).value).toEqual(-15);
         })
         .it(`steByStep()`, () => {
           range.stepByStep((v, s, m) => {
